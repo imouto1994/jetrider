@@ -3,6 +3,7 @@ using System.Collections;
 
 public class DataController : MonoBehaviour {
 
+	static public DataController instance;
 	// Use this for initialization
 	void Start () {
 	

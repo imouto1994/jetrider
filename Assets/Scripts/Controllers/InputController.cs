@@ -3,6 +3,7 @@ using System.Collections;
 
 public class InputController : MonoBehaviour {
 
+	static public InputController instance;
 	// Use this for initialization
 	void Start () {
 	

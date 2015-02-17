@@ -1,15 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// SINGLETON CLASS FOR GAME CONTROLLER
 public class GameController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+	static public GameController instance;
 	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	public delegate void PauseHandler(bool paused);
+	public event PauseHandler OnPauseGame;
+
 }
