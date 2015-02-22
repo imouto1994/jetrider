@@ -9,7 +9,7 @@ public class PointTracker : MonoBehaviour {
 	public float pointsPerTick = 2;
 
 	private float points;
-	private const string POINTS_TEXT = "Points: ";
+	//private const string POINTS_TEXT = "Points: ";
 
 	// Use this for initialization
 	void Start () {
