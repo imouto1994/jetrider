@@ -80,7 +80,7 @@ public class CameraController : MonoBehaviour {
 	}
 
 	// Check function whether the camera is in-game
-	public bool isInGameTransform() 
+	public bool IsInGameTransform() 
 	{
 		return targetPosition == inGamePosition && targetRotation.eulerAngles == inGameRotation;
 	}

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PowerUpObject : MonoBehaviour {
+public class SceneObject : BasicObject {
 
 	// Use this for initialization
 	void Start () {
