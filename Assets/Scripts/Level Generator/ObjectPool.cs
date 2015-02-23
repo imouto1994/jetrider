@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+// Basic data needed for spawning objects
 public struct ObjectSpawnData
 {
 	public float largestScene;
@@ -14,6 +15,7 @@ public struct ObjectSpawnData
 }
 
 /*
+ * SINGLETON CLASS for pooling objects
  * Used in conjuction with the object generator, the object pool keeps track of all of the objects. 
  * The infinite object generator requests a new object through getNextObjectIndex/objectFromPool 
  * and the object pool will return the object based on the appearance rules/ probability.
@@ -22,9 +24,6 @@ public class ObjectPool : MonoBehaviour
 {
 	
 	static public ObjectPool instance;
-	
-	// Number of cached objects
-	public int prespawnCache = 0;
 	
 	// Platforms:
 	public PlatformObject[] platforms;
@@ -54,8 +53,8 @@ public class ObjectPool : MonoBehaviour
 	private List<List<BasicObject>> objectsPool;
 	private List<int> objectPoolIndex;
 	
-	private List<AppearRules> appearanceRules;
-	private List<AppearProbs> appearanceProbability;
+	private List<SpawnRules> appearRules;
+	private List<SpawnProbs> appearProbs;
 	private List<float> probabilityCache;
 	private List<bool> objectCanSpawnCache;
 	
@@ -63,19 +62,20 @@ public class ObjectPool : MonoBehaviour
 	{
 		instance = this;
 	}
-	
+
+	// Intialize function
 	public void Init()
 	{
 		objectsPool = new List<List<BasicObject>>();
 		objectPoolIndex = new List<int>();
 		
-		appearanceRules = new List<AppearRules>();
-		appearanceProbability = new List<AppearProbs>();
+		appearRules = new List<SpawnRules>();
+		appearProbs = new List<SpawnProbs>();
 		probabilityCache = new List<float>();
 		objectCanSpawnCache = new List<bool>();
 		
 		int totalObjs = platforms.Length + scenes.Length + obstacles.Length + coins.Length + powerUps.Length;
-		BasicObject infiniteObject;
+		BasicObject currentObject;
 		for (int i = 0; i < totalObjs; ++i) {
 			objectsPool.Add(new List<BasicObject>());
 			objectPoolIndex.Add(0);
@@ -83,98 +83,52 @@ public class ObjectPool : MonoBehaviour
 			probabilityCache.Add(0);
 			objectCanSpawnCache.Add(false);
 			
-			infiniteObject = ObjectIndexToObject(i);
-			infiniteObject.Init();
-			appearanceRules.Add(infiniteObject.GetComponent<AppearRules>());
-			appearanceRules[i].Init();
-			appearanceProbability.Add(infiniteObject.GetComponent<AppearProbs>());
-			appearanceProbability[i].Init();
+			currentObject = GetObjectFromObjectIndex(i);
+			currentObject.Init();
+			appearRules.Add(currentObject.GetComponent<SpawnRules>());
+			appearRules[i].Init();
+			appearProbs.Add(currentObject.GetComponent<SpawnProbs>());
+			appearProbs[i].Init();
 		}
 		
 		// wait until all of the appearance rules have been initialized before the object index is assigned
 		for (int i = 0; i < totalObjs; ++i) {
-			infiniteObject = ObjectIndexToObject(i);
+			currentObject = GetObjectFromObjectIndex(i);
 			for (int j = 0; j < totalObjs; ++j) {
-				ObjectIndexToObject(j).GetComponent<AppearRules>().AssignIndexToObject(infiniteObject, i);
+				GetObjectFromObjectIndex(j).GetComponent<SpawnRules>().AssignIndexToObject(currentObject, i);
 			}
-		}
-		
-		// cache a fixed amount of each type of object before the game starts
-		List<BasicObject> infiniteObjects = new List<BasicObject>();
-		for (int i = 0; i < prespawnCache; ++i) {
-			for (int j = 0; j < platforms.Length; ++j) {
-				infiniteObjects.Add(ObjectFromPool(j, ObjectType.Platform));
-			}
-			for (int j = 0; j < scenes.Length; ++j) {
-				infiniteObjects.Add(ObjectFromPool(j, ObjectType.Scene));
-			}
-		}
-		
-		for (int i = 0; i < infiniteObjects.Count; ++i) {
-			infiniteObjects[i].Deactivate();
 		}
 	}
 	
-	// Measure the size of the platforms and scenes
+	// Get the sizes of the platforms and scenes
 	public void GetObjectSizes(out Vector3[] platformSizes, out Vector3[] sceneSizes, out float largestSceneLength)
 	{	
-		/*
+		// Retrieve Platform sizes
 		platformSizes = new Vector3[platforms.Length];
 		for (int i = 0; i < platforms.Length; ++i) {
-			
-			if (platforms[i].overrideSize != Vector3.zero) {
-				platformSizes[i] = platforms[i].overrideSize;
-			} else {
-				Renderer platformRenderer = platforms[i].GetComponent<Renderer>();
-				if (platformRenderer == null) {
-					Debug.LogError("Error: platform " + platforms[i].name + " has no renderer attached and does not override the size. Add a renderer or override the size to remove this error.");
-					platformSizes[i] = Vector3.zero;
-					continue;
-				}
-				platformSizes[i] = platforms[i].GetComponent<Renderer>().bounds.size;
-				Vector3 heightChange = platformSizes[i];
-				if (platforms[i].slope != PlatformSlope.None) {
-					heightChange.y *= platforms[i].slope == PlatformSlope.Down ? -1 : 1;
-				} else {
-					heightChange.y = 0;
-				}
-				platformSizes[i] = heightChange;
+			Renderer platformRenderer = platforms[i].GetComponent<Renderer>();
+			if (platformRenderer == null) {
+				Debug.LogError("Error: platform " + platforms[i].name + " has no renderer attached");
+				platformSizes[i] = Vector3.zero;
+				continue;
 			}
+			platformSizes[i] = platforms[i].GetComponent<Renderer>().bounds.size;
 		}
 		
-		// the parent scene object must represent the children's size
+		// The parent scene object must represent the children's size
 		sceneSizes = new Vector3[scenes.Length];
 		largestSceneLength = 0;
 		for (int i = 0; i < scenes.Length; ++i) {
-			if (scenes[i].overrideSize != Vector3.zero) {
-				sceneSizes[i] = scenes[i].overrideSize;
-				sceneSizes[i] += scenes[i].centerOffset;
-				SceneAppearanceRules sceneAppearanceRule = scenes[i].GetComponent<SceneAppearanceRules>();
-				if (sceneAppearanceRule.linkedPlatforms.Count == 1) {
-					PlatformObject linkedPlatform = sceneAppearanceRule.linkedPlatforms[0].platform as PlatformObject;
-					if (linkedPlatform.slope == PlatformSlope.None) {
-						sceneSizes[i].y = 0;
-					}
-				}
-			} else {
-				Renderer sceneRenderer = scenes[i].GetComponent<Renderer>();
-				if (sceneRenderer == null) {
-					Debug.LogError("Error: scene " + scenes[i].name + " has no renderer attached and does not override the size. Add a renderer or override the size to remove this error.");
-					sceneSizes[i] = Vector3.zero;
-					continue;
-				}
-				sceneSizes[i] = scenes[i].GetComponent<Renderer>().bounds.size;
-				sceneSizes[i] += scenes[i].centerOffset;
-				sceneSizes[i].y = 0;
-				SceneAppearanceRules sceneAppearanceRule = scenes[i].GetComponent<SceneAppearanceRules>();
-				if (sceneAppearanceRule.linkedPlatforms.Count == 1) {
-					PlatformObject linkedPlatform = sceneAppearanceRule.linkedPlatforms[0].platform as PlatformObject;
-					if (linkedPlatform.slope != PlatformSlope.None) {
-						sceneSizes[i].y = linkedPlatform.GetComponent<Renderer>().bounds.size.y * (linkedPlatform.slope == PlatformSlope.Down ? -1 : 1);
-					}
-				}
-				
+			Renderer sceneRenderer = scenes[i].GetComponent<Renderer>();
+			if (sceneRenderer == null) {
+				Debug.LogError("Error: scene " + scenes[i].name + " has no renderer attached");
+				sceneSizes[i] = Vector3.zero;
+				continue;
 			}
+			sceneSizes[i] = scenes[i].GetComponent<Renderer>().bounds.size;
+			sceneSizes[i] += scenes[i].centerOffset;
+			sceneSizes[i].y = 0;
+
 			if (largestSceneLength < sceneSizes[i].z) {
 				largestSceneLength = sceneSizes[i].z;
 			}
@@ -184,12 +138,12 @@ public class ObjectPool : MonoBehaviour
 		if (sceneSizes.Length > 0) {
 			float buffer = (sceneSizes[0].x - platformSizes[0].x) / 2 + platformSizes[0].x;
 			for (int i = 0; i < scenes.Length; ++i) {
-				scenes[i].GetComponent<SceneAppearanceRules>().SetSizes(buffer, sceneSizes[i].z);
+				scenes[i].GetComponent<SceneSpawnRules>().SetSizes(buffer, sceneSizes[i].z);
 			}
 		}
-		*/
 	}
-	
+
+	// Get the list of start positions for platform and scenes objects
 	public void GetObjectStartPositions(out Vector3[] platformStartPosition, out Vector3[] sceneStartPosition)
 	{
 		platformStartPosition = new Vector3[platforms.Length];
@@ -204,10 +158,10 @@ public class ObjectPool : MonoBehaviour
 	}
 	
 	// Returns the specified object from the pool
-	public BasicObject ObjectFromPool(int localIndex, ObjectType objectType)
+	public BasicObject GetObjectFromPool(int localIndex, ObjectType objectType)
 	{
 		BasicObject obj = null;
-		int objectIndex = LocalIndexToObjectIndex(localIndex, objectType);
+		int objectIndex = GetObjectIndexFromLocalIndex(localIndex, objectType);
 		List<BasicObject> objectPool = objectsPool[objectIndex];
 		int poolIndex = objectPoolIndex[objectIndex];
 		
@@ -250,7 +204,8 @@ public class ObjectPool : MonoBehaviour
 		objectPoolIndex[objectIndex] = (poolIndex + 1) % objectPool.Count;
 		return obj;
 	}
-	
+
+	// Assign an abstract parent to an object
 	public void AssignParent(BasicObject currentObject, ObjectType objectType)
 	{
 		switch (objectType) {
@@ -275,8 +230,8 @@ public class ObjectPool : MonoBehaviour
 		}
 	}
 	
-	// Converts local index to object index
-	public int LocalIndexToObjectIndex(int localIndex, ObjectType objectType)
+	// Retrieve object index from the given local index 
+	public int GetObjectIndexFromLocalIndex(int localIndex, ObjectType objectType)
 	{
 		switch (objectType) {
 		case ObjectType.Platform:
@@ -294,8 +249,8 @@ public class ObjectPool : MonoBehaviour
 		}
 		return -1; // error
 	}
-	// Converts object index to local index
-	public int ObjectIndexToLocalIndex(int objectIndex, ObjectType objectType)
+	// Retrieve the local index from given object index
+	public int GetLocalIndexFromObjectIndex(int objectIndex, ObjectType objectType)
 	{
 		switch (objectType) {
 		case ObjectType.Platform:
@@ -313,8 +268,9 @@ public class ObjectPool : MonoBehaviour
 		}
 		return -1; // error	
 	}
-	
-	public BasicObject LocalIndexToInfiniteObject(int localIndex, ObjectType objectType)
+
+	// Retrieve object from the given local index
+	public BasicObject GetObjectFromLocalIndex(int localIndex, ObjectType objectType)
 	{
 		switch (objectType) {
 		case ObjectType.Platform:
@@ -339,8 +295,8 @@ public class ObjectPool : MonoBehaviour
 		return platforms.Length + scenes.Length + obstacles.Length + coins.Length + powerUps.Length;
 	}
 	
-	// Converts the object index to an infinite object
-	private BasicObject ObjectIndexToObject(int objectIndex)
+	// Retrieve object from the given object indexs
+	private BasicObject GetObjectFromObjectIndex(int objectIndex)
 	{
 		if (objectIndex < platforms.Length) {
 			return platforms[objectIndex];
@@ -356,13 +312,10 @@ public class ObjectPool : MonoBehaviour
 		return null;
 	}
 	
-	/**
-         * The next platform is determined by probabilities as well as object rules.
-         * spawnData contains any extra data that is needed to make a decision if the object can be spawned
-         */
+	// Get the index of the next object from given object type
 	public int GetNextObjectIndex(ObjectType objectType, ObjectSpawnData spawnData)
 	{
-		InfiniteObject[] objects = null;
+		BasicObject[] objects = null;
 		switch (objectType) {
 		case ObjectType.Platform:
 			objects = platforms;
@@ -384,26 +337,17 @@ public class ObjectPool : MonoBehaviour
 			break;
 		}
 		float totalProbability = 0;
-		float probabilityAdjustment = 0;
 		float distance = ObjectHistory.instance.GetTotalDistance(objectType == ObjectType.Scene);
 		int objectIndex;
 		for (int localIndex = 0; localIndex < objects.Length; ++localIndex) {
-			objectIndex = LocalIndexToObjectIndex(localIndex, objectType);
+			objectIndex = GetObjectIndexFromLocalIndex(localIndex, objectType);
 			// cache the result
-			objectCanSpawnCache[objectIndex] = appearanceRules[objectIndex].CanSpawnObject(distance, spawnData);
+			objectCanSpawnCache[objectIndex] = appearRules[objectIndex].CanSpawnObject(distance, spawnData);
 			if (!objectCanSpawnCache[objectIndex]) {
 				continue;
 			}
-			
-			probabilityAdjustment = appearanceRules[objectIndex].ProbabilityAdjustment(distance);
-			// If the probability adjustment has a value of the float's max value then spawn this object no matter hwat
-			if (probabilityAdjustment == float.MaxValue) {
-				probabilityCache[objectIndex] = probabilityAdjustment;
-				totalProbability = float.MaxValue;
-				break;
-			}
-			
-			probabilityCache[objectIndex] = appearanceProbability[objectIndex].GetProbability(distance) * probabilityAdjustment;
+
+			probabilityCache[objectIndex] = appearProbs[objectIndex].GetProbability(distance);
 			totalProbability += probabilityCache[objectIndex];
 		}
 		
@@ -411,14 +355,13 @@ public class ObjectPool : MonoBehaviour
 		if (totalProbability == 0) {
 			return -1;
 		}
-		
+
+		// Use probability to decide which index should be returned
 		float randomValue = Random.value;
 		float prevObjProbability = 0;
 		float objProbability = 0;
-		// with the total probability we can determine a platform
-		// minor optimization: don't check the last platform. If we get that far into the loop then regardless we are selecting that platform
 		for (int localIndex = 0; localIndex < objects.Length - 1; ++localIndex) {
-			objectIndex = LocalIndexToObjectIndex(localIndex, objectType);
+			objectIndex = GetObjectIndexFromLocalIndex(localIndex, objectType);
 			if (!objectCanSpawnCache[objectIndex]) {
 				continue;
 			}

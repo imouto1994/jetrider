@@ -2,22 +2,26 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+/* List of single rule target certain object */
 [System.Serializable]
 public class RulesList
 {
-
+	// The target object for all these rules
 	public BasicObject targetObject;
+	// List of rules
 	public List<SingleRule> rules;
-	
-	private int targetObjectIndex; // the object index of the infinite object that we are interested in
-	private bool targetObjectIsScene; // is the target object a scene object
+	// The object index of the infinite object that we are interested in
+	private int targetObjectIndex; 
+	// Indicator if the target object is a scene object
+	private bool isSceneObject;
+	// The object type of the object that this script is attached to
 	private ObjectType thisObjectType;
 	
-	public RulesList(BasicObject io, SingleRule r)
+	public RulesList(BasicObject targetObject, SingleRule rule)
 	{
-		targetObject = io;
+		this.targetObject = targetObject;
 		rules = new List<SingleRule>();
-		rules.Add(r);
+		rules.Add(rule);
 	}
 	
 	public void Init(ObjectType objectType)
@@ -25,7 +29,8 @@ public class RulesList
 		targetObjectIndex = -1;
 		thisObjectType = objectType;
 	}
-	
+
+	// Assign the object index for target object
 	public bool AssignIndexToObject(BasicObject obj, int index)
 	{
 		if (targetObject == null) {
@@ -34,18 +39,19 @@ public class RulesList
 		
 		if (obj == targetObject) {
 			targetObjectIndex = index;
-			targetObjectIsScene = targetObject.GetObjectType() == ObjectType.Scene;
+			isSceneObject = targetObject.GetObjectType() == ObjectType.Scene;
 			return true;
 		}
 		
 		return false;
 	}
 	
-	// Objects may not be able to be spawned if they are too close to another object, for example
+	// Check whether this object can be spawned if all rules are passed
 	public bool CanSpawnObject(float distance)
 	{
 		for (int i = 0; i < rules.Count; ++i) {
-			if (!rules[i].CanSpawnObject(distance, thisObjectType, targetObjectIndex, (targetObject != null ? targetObject.GetObjectType() : ObjectType.Last))) {
+			ObjectType targetObjectType = targetObject != null ? targetObject.GetObjectType() : ObjectType.Count;
+			if (!rules[i].CanSpawnObject(distance, thisObjectType, targetObjectIndex, targetObjectType)) {
 				return false;
 			}
 		}

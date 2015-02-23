@@ -69,9 +69,6 @@ public class ObjectHistory : MonoBehaviour
 	private bool[] spawnedPlatformSectionTransition;
 	private bool[] spawnedSceneSectionTransition;
 
-	// Store objects for reset game
-	private BasicObject savedObjects;
-
 	public void Awake()
 	{
 		instance = this;
@@ -243,7 +240,7 @@ public class ObjectHistory : MonoBehaviour
 		objectTypeSpawnIndex[(int)direction][(int)objectType] += 1;
 		objectSpawnIndex[(int)direction][index] = objectTypeSpawnIndex[(int)direction][(int)objectType];
 		lastObjectTypeSpawnDistance[(int)direction][(int)objectType] = lastObjectSpawnDistance[(int)direction][index];
-		lastLocalIndex[(int)direction][(int)objectType] = ObjectPool.instance.ObjectIndexToLocalIndex(index, objectType);
+		lastLocalIndex[(int)direction][(int)objectType] = ObjectPool.instance.GetLocalIndexFromObjectIndex(index, objectType);
 		
 		BasicObject prevTopObject = null;
 		if (objectType == ObjectType.Platform) {
@@ -374,35 +371,35 @@ public class ObjectHistory : MonoBehaviour
 	// Returns the local index of the first platform
 	public int GetFirstPlatformIndex()
 	{
-		return platformDistanceDataMap[(int)activeDirection].FirstIndex();
+		return platformDistanceDataMap[(int)activeDirection].GetFirstIndex();
 	}
 	
 	// Returns the section of the first platform
 	public int GetFirstPlatformSection()
 	{
-		return platformDistanceDataMap[(int)activeDirection].FirstSection();
+		return platformDistanceDataMap[(int)activeDirection].GetFirstSection();
 	}
 	
 	// Returns the top-most platform or scene object
-	public BasicObject GetTopInfiniteObject(Direction direction, bool isSceneObject)
+	public BasicObject GetTopObject(Direction direction, bool isSceneObject)
 	{
 		return (isSceneObject ? topSceneObjectSpawned[(int)direction] : topPlatformObjectSpawned[(int)direction]);
 	}
 	
 	// Returns the bottom-most platform or scene object
-	public BasicObject GetBottomInfiniteObject(Direction direction, bool isSceneObject)
+	public BasicObject GetBottomObject(Direction direction, bool isSceneObject)
 	{
 		return (isSceneObject ? bottomSceneObjectSpawned[(int)direction] : bottomPlatformObjectSpawned[(int)direction]);
 	}
 	
 	// Returns the top-most turn platform or scene object
-	public BasicObject GetTopTurnInfiniteObject(bool isSceneObject)
+	public BasicObject GetTopTurnObject(bool isSceneObject)
 	{
 		return (isSceneObject ? topTurnSceneObjectSpawned : topTurnPlatformObjectSpawned);
 	}
 	
 	// Returns the bottom-most turn platform or scene object
-	public BasicObject GetBottomTurnInfiniteObject(bool isSceneObject)
+	public BasicObject GetBottomTurnObject(bool isSceneObject)
 	{
 		return (isSceneObject ? bottomTurnSceneObjectSpawned : bottomTurnPlatformObjectSpawned);
 	}

@@ -20,7 +20,7 @@ public class PlatformDistanceDataMap
 		sections = new List<int>();
 	}
 	
-	// a new platform has been spawned, add the distance and section
+	// A new platform has been spawned, add the distance and section
 	public void AddIndex(float distance, int index, int section)
 	{
 		distances.Add(distance);
@@ -28,7 +28,7 @@ public class PlatformDistanceDataMap
 		sections.Add(section);
 	}
 	
-	// remove the reference if the scene distance is greater than the earliest platform distance
+	// Remove the reference if the scene distance is greater than the earliest platform distance
 	public void CheckForRemoval(float distance)
 	{
 		if (distances.Count > 0) {
@@ -41,7 +41,7 @@ public class PlatformDistanceDataMap
 		}
 	}
 	
-	// returns the first platform index who doesnt have a scene spawned near it
+	// Retrieve the first platform local index who does not have a scene spawned near it
 	public int FirstIndex()
 	{
 		if (localIndexes.Count > 0) {
@@ -49,7 +49,8 @@ public class PlatformDistanceDataMap
 		}
 		return -1;
 	}
-	
+
+	// Retrieve the first section which does not have a scene spawned near it
 	public int FirstSection()
 	{
 		if (sections.Count > 0) {
@@ -57,14 +58,16 @@ public class PlatformDistanceDataMap
 		}
 		return -1;
 	}
-	
+
+	// Reset all values
 	public void ResetValues()
 	{
 		distances.Clear();
 		localIndexes.Clear();
 		sections.Clear();
 	}
-	
+
+	// Copy from another PlatformDistanceDataMap object
 	public void CopyFrom(PlatformDistanceDataMap other)
 	{
 		distances = other.distances.GetRange(0, other.distances.Count);
