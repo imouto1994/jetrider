@@ -67,7 +67,7 @@ public class ObjectGenerator : MonoBehaviour
 		spawnData.section = 0;
 		spawnData.sectionTransition = false;
 
-		SpawnObjects(true);
+		this.SpawnObjects(true);
 		
 		GameController.instance.OnStartGame += StartGame;
 	}
@@ -85,7 +85,7 @@ public class ObjectGenerator : MonoBehaviour
 		BasicObject prevPlatform = ObjectHistory.instance.GetTopObject(Direction.Center, IS_PLATFORM);
 		bool isWithinSpawnDistance = prevPlatform == null || 
 									Vector3.Scale(prevPlatform.GetTransform().position, spawnDirection).sqrMagnitude < sqrHorizon;
-		bool hasStraightPath = turnPlatform[(int)Direction.Center] == turnPlatform[(int)Direction.Center].isStraight;
+		bool hasStraightPath = turnPlatform[(int)Direction.Center] == null || turnPlatform[(int)Direction.Center].isStraight;
 	
 		while (isWithinSpawnDistance && hasStraightPath) {
 			Vector3 position = Vector3.zero;
@@ -107,7 +107,7 @@ public class ObjectGenerator : MonoBehaviour
 			// Refresh conditions
 			isWithinSpawnDistance = prevPlatform == null || 
 									Vector3.Scale(prevPlatform.GetTransform().position, spawnDirection).sqrMagnitude < sqrHorizon;
-			hasStraightPath = turnPlatform[(int)Direction.Center] == turnPlatform[(int)Direction.Center].isStraight;
+			hasStraightPath = turnPlatform[(int)Direction.Center] == null || turnPlatform[(int)Direction.Center].isStraight;
 		}
 
 
@@ -370,10 +370,10 @@ public class ObjectGenerator : MonoBehaviour
 	
 	// Move all of the active objects 
 	public void MoveObjects(float moveDistance)
-	{
+	{	
+
 		if (moveDistance == 0)
 			return;
-		
 		// The distance vector to move the objects
 		Vector3 delta = moveDirection * moveDistance;
 		
@@ -381,7 +381,6 @@ public class ObjectGenerator : MonoBehaviour
 		// objects. Only have to check the bottom-most platform/scene as well to determine if it should be removed
 		BasicObject currentObject = null;
 		Transform objectTransform = null;
-		PlatformObject platformObject = null;
 		for (int i = 0; i < 2; ++i) { // loop through the platform and scenes
 			bool isScene = i == 0;
 			for (int j = 0; j < (int)Direction.Count; ++j) {

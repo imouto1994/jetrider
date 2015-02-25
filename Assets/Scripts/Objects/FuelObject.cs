@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FuelObject : MonoBehaviour {
+public class FuelObject : CollidableObject {
 
 	// Use this for initialization
 	void Start () {

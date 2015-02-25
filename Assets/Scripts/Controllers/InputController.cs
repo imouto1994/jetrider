@@ -1,16 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class InputController : MonoBehaviour {
+public class ActionController : MonoBehaviour {
 
-	static public InputController instance;
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	static public ActionController instance;
+
+	public void Awake()
+	{
+		instance = this;
 	}
 }

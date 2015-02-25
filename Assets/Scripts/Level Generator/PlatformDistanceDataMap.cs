@@ -42,7 +42,7 @@ public class PlatformDistanceDataMap
 	}
 	
 	// Retrieve the first platform local index who does not have a scene spawned near it
-	public int FirstIndex()
+	public int GetFirstIndex()
 	{
 		if (localIndexes.Count > 0) {
 			return localIndexes[0];
@@ -51,7 +51,7 @@ public class PlatformDistanceDataMap
 	}
 
 	// Retrieve the first section which does not have a scene spawned near it
-	public int FirstSection()
+	public int GetFirstSection()
 	{
 		if (sections.Count > 0) {
 			return sections[0];

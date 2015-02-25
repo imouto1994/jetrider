@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PowerUpObject : MonoBehaviour {
+public class PowerUpObject : CollidableObject {
 
 	// Use this for initialization
 	void Start () {

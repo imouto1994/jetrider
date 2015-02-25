@@ -7,7 +7,11 @@ public class PlayerAnimation : MonoBehaviour {
 	void Start () {
 	
 	}
-	
+
+	public void Init() {
+
+	}
+
 	// Update is called once per frame
 	void Update () {
 	

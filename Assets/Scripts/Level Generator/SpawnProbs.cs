@@ -26,6 +26,6 @@ public class SpawnProbs : MonoBehaviour
 			}
 		}
 		
-		return nonappearProbabilities.GetValue(distance);
+		return appearProbabilities.GetValue(distance);
 	}
 }

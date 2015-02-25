@@ -12,8 +12,6 @@ public class RulesList
 	public List<SingleRule> rules;
 	// The object index of the infinite object that we are interested in
 	private int targetObjectIndex; 
-	// Indicator if the target object is a scene object
-	private bool isSceneObject;
 	// The object type of the object that this script is attached to
 	private ObjectType thisObjectType;
 	
@@ -39,7 +37,6 @@ public class RulesList
 		
 		if (obj == targetObject) {
 			targetObjectIndex = index;
-			isSceneObject = targetObject.GetObjectType() == ObjectType.Scene;
 			return true;
 		}
 		

@@ -11,19 +11,19 @@ public class SectionList
 	{
 		this.sections = new HashSet<int>();
 		for (int i = 0; i < sections.Count; ++i) {
-			sections.Add(sections[i]);
+			this.sections.Add(sections[i]);
 		}
 	}
 	
 	// Check whether this object can be in this section
 	public bool ContainsSection(int section)
 	{
-		return sections.Contains(section);
+		return this.sections.Contains(section);
 	}
 	
 	// Get the number of sections that this object can be in
 	public int Count()
 	{
-		return sections.Count;
+		return this.sections.Count;
 	}
 }

@@ -37,9 +37,9 @@ public class ObjectPool : MonoBehaviour
 	public ObstacleObject[] obstacles;
 	public Transform obstacleParent;
 	
-	// Coins:
-	public CollidableObject[] coins;
-	public Transform coinParent;
+	// Donuts:
+	public CollidableObject[] donuts;
+	public Transform donutParent;
 
 	// Fuels
 	public CollidableObject[] fuels;
@@ -74,7 +74,7 @@ public class ObjectPool : MonoBehaviour
 		probabilityCache = new List<float>();
 		objectCanSpawnCache = new List<bool>();
 		
-		int totalObjs = platforms.Length + scenes.Length + obstacles.Length + coins.Length + powerUps.Length;
+		int totalObjs = platforms.Length + scenes.Length + obstacles.Length + donuts.Length + powerUps.Length;
 		BasicObject currentObject;
 		for (int i = 0; i < totalObjs; ++i) {
 			objectsPool.Add(new List<BasicObject>());
@@ -185,7 +185,7 @@ public class ObjectPool : MonoBehaviour
 			objects = obstacles;
 			break;
 		case ObjectType.Donut:
-			objects = coins;
+			objects = donuts;
 			break;
 		case ObjectType.PowerUp:
 			objects = powerUps;
@@ -195,7 +195,7 @@ public class ObjectPool : MonoBehaviour
 			break;
 		}
 		
-		obj = (GameObject.Instantiate(objects[localIndex].gameObject) as GameObject).GetComponent<InfiniteObject>();
+		obj = (GameObject.Instantiate(objects[localIndex].gameObject) as GameObject).GetComponent<BasicObject>();
 		
 		AssignParent(obj, objectType);
 		obj.SetLocalIndex(localIndex);
@@ -219,7 +219,7 @@ public class ObjectPool : MonoBehaviour
 			currentObject.SetParent(obstacleParent);
 			break;
 		case ObjectType.Donut:
-			currentObject.SetParent(coinParent);
+			currentObject.SetParent(donutParent);
 			break;
 		case ObjectType.Fuel:
 			currentObject.SetParent(fuelParent);
@@ -243,9 +243,9 @@ public class ObjectPool : MonoBehaviour
 		case ObjectType.Donut:
 			return platforms.Length + scenes.Length + obstacles.Length + localIndex;
 		case ObjectType.Fuel:
-			return platforms.Length + scenes.Length + obstacles.Length + coins.Length + localIndex;
+			return platforms.Length + scenes.Length + obstacles.Length + donuts.Length + localIndex;
 		case ObjectType.PowerUp:
-			return platforms.Length + scenes.Length + obstacles.Length + coins.Length + fuels.Length + localIndex;
+			return platforms.Length + scenes.Length + obstacles.Length + donuts.Length + fuels.Length + localIndex;
 		}
 		return -1; // error
 	}
@@ -262,9 +262,9 @@ public class ObjectPool : MonoBehaviour
 		case ObjectType.Donut:
 			return objectIndex - platforms.Length - scenes.Length - obstacles.Length;
 		case ObjectType.Fuel:
-			return objectIndex - platforms.Length - scenes.Length - obstacles.Length - coins.Length;
+			return objectIndex - platforms.Length - scenes.Length - obstacles.Length - donuts.Length;
 		case ObjectType.PowerUp:
-			return objectIndex - platforms.Length - scenes.Length - obstacles.Length - fuels.Length - coins.Length;
+			return objectIndex - platforms.Length - scenes.Length - obstacles.Length - fuels.Length - donuts.Length;
 		}
 		return -1; // error	
 	}
@@ -280,7 +280,7 @@ public class ObjectPool : MonoBehaviour
 		case ObjectType.Obstacle:
 			return obstacles[localIndex];
 		case ObjectType.Donut:
-			return coins[localIndex];
+			return donuts[localIndex];
 		case ObjectType.Fuel:
 			return fuels[localIndex];
 		case ObjectType.PowerUp:
@@ -292,7 +292,7 @@ public class ObjectPool : MonoBehaviour
 	// Returns the number of total objects
 	public int GetTotalObjectCount()
 	{
-		return platforms.Length + scenes.Length + obstacles.Length + coins.Length + powerUps.Length;
+		return platforms.Length + scenes.Length + obstacles.Length + donuts.Length + powerUps.Length;
 	}
 	
 	// Retrieve object from the given object indexs
@@ -304,10 +304,10 @@ public class ObjectPool : MonoBehaviour
 			return scenes[objectIndex - platforms.Length];
 		} else if (objectIndex < platforms.Length + scenes.Length + obstacles.Length) {
 			return obstacles[objectIndex - platforms.Length - scenes.Length];
-		} else if (objectIndex < platforms.Length + scenes.Length + obstacles.Length + coins.Length) {
-			return coins[objectIndex - platforms.Length - scenes.Length - obstacles.Length];
-		} else if (objectIndex < platforms.Length + scenes.Length + obstacles.Length + coins.Length + powerUps.Length) {
-			return powerUps[objectIndex - platforms.Length - scenes.Length - obstacles.Length - coins.Length];
+		} else if (objectIndex < platforms.Length + scenes.Length + obstacles.Length + donuts.Length) {
+			return donuts[objectIndex - platforms.Length - scenes.Length - obstacles.Length];
+		} else if (objectIndex < platforms.Length + scenes.Length + obstacles.Length + donuts.Length + powerUps.Length) {
+			return powerUps[objectIndex - platforms.Length - scenes.Length - obstacles.Length - donuts.Length];
 		}
 		return null;
 	}
@@ -327,7 +327,7 @@ public class ObjectPool : MonoBehaviour
 			objects = obstacles;
 			break;
 		case ObjectType.Donut:
-			objects = coins;
+			objects = donuts;
 			break;
 		case ObjectType.Fuel:
 			objects = fuels;
@@ -348,9 +348,10 @@ public class ObjectPool : MonoBehaviour
 			}
 
 			probabilityCache[objectIndex] = appearProbs[objectIndex].GetProbability(distance);
+			print (probabilityCache[objectIndex]);
 			totalProbability += probabilityCache[objectIndex];
 		}
-		
+
 		// chance of spawning nothing (especially in the case of collidable objects)
 		if (totalProbability == 0) {
 			return -1;

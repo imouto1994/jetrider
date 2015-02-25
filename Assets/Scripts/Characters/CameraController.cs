@@ -49,8 +49,9 @@ public class CameraController : MonoBehaviour {
 	public void Start()
 	{
 		cameraTransform = transform;
-		targetPosition = cameraTransform.position;
-		targetRotation = cameraTransform.rotation;
+		// Use these if we want to display initial scene of the game
+		//targetPosition = cameraTransform.position;
+		//targetRotation = cameraTransform.rotation;
 	}
 
 	public void StartGame(bool isRestart)
@@ -75,7 +76,6 @@ public class CameraController : MonoBehaviour {
 			isTransitioning = true;
 		}
 		isGameActive = true;
-
 		GameController.instance.OnPauseGame += GamePaused;
 	}
 
@@ -112,11 +112,10 @@ public class CameraController : MonoBehaviour {
 	            isTransitioned = false;
 	            cameraTransform.position = Vector3.MoveTowards(cameraTransform.position, relativeTargetPosition, moveSpeed);
 	        }
-
 	        if (Quaternion.Angle(cameraTransform.rotation, relativeTargetRotation) > 0.01f) {
 	            isTransitioned = false;
 	            cameraTransform.rotation = Quaternion.RotateTowards(cameraTransform.rotation, relativeTargetRotation, rotationSpeed);
-	        }
+			}
 	        isTransitioning = !isTransitioned;
 	    } else {
 	        Vector3 currentVelocity = Vector3.zero;

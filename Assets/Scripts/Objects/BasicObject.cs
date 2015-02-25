@@ -119,7 +119,7 @@ public abstract class BasicObject : MonoBehaviour
 	}
 	
 	// Orient for objects relative to parent
-	public virtual void Orient(BasicObject parent, Vector3 position, Quaternion rotation)
+	public virtual void Orient(PlatformObject parent, Vector3 position, Quaternion rotation)
 	{
 		thisTransform.parent = parent.GetTransform();
 		Vector3 pos = Vector3.zero;

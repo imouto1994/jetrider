@@ -3,7 +3,7 @@ using System.Collections;
 
 /* Interpolate value given start and end distances + values */
 [System.Serializable]
-public class InterpolatedValue : MonoBehaviour {	
+public class InterpolatedValue {	
 	// Start data
 	public int startDistance;
 	public float startValue;
