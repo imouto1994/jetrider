@@ -85,8 +85,7 @@ public class ObjectGenerator : MonoBehaviour
 		BasicObject prevPlatform = ObjectHistory.instance.GetTopObject(Direction.Center, IS_PLATFORM);
 		bool isWithinSpawnDistance = prevPlatform == null || 
 									Vector3.Scale(prevPlatform.GetTransform().position, spawnDirection).sqrMagnitude < sqrHorizon;
-		bool hasStraightPath = turnPlatform[(int)Direction.Center] == null || turnPlatform[(int)Direction.Center].isStraight;
-	
+		bool hasStraightPath = turnPlatform[(int)Direction.Center] == null || (turnPlatform[(int)Direction.Center].isStraight);
 		while (isWithinSpawnDistance && hasStraightPath) {
 			Vector3 position = Vector3.zero;
 			if (prevPlatform != null) {
@@ -110,11 +109,10 @@ public class ObjectGenerator : MonoBehaviour
 			hasStraightPath = turnPlatform[(int)Direction.Center] == null || turnPlatform[(int)Direction.Center].isStraight;
 		}
 
-
 		// Spawn objects in the left and right direction
 		if (turnPlatform[(int)Direction.Center] != null) {
 			Vector3 turnDirection = turnPlatform[(int)Direction.Center].GetTransform().right;
-			
+	
 			// spawn the platform and scene objects for the left and right turns
 			for (int i = 0; i < 2; ++i) {
 				Direction location = (i == 0 ? Direction.Right : Direction.Left);

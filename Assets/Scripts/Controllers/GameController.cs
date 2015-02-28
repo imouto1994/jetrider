@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour
 	public void StartGame(bool fromRestart)
 	{
 		gameActive = true;
-
+		InputController.instance.StartGame();
 		CameraController.instance.StartGame(fromRestart);
 		PlayerController.instance.StartGame();
 		if (OnStartGame != null) {

@@ -110,7 +110,8 @@ public abstract class BasicObject : MonoBehaviour
 	{
 		Vector3 pos = Vector3.zero;
 		float yAngle = rotation.eulerAngles.y;
-		pos.Set(startPosition.x * Mathf.Cos(yAngle * Mathf.Deg2Rad) + startPosition.z * Mathf.Sin(yAngle * Mathf.Deg2Rad), startPosition.y,
+		pos.Set(startPosition.x * Mathf.Cos(yAngle * Mathf.Deg2Rad) + startPosition.z * Mathf.Sin(yAngle * Mathf.Deg2Rad), 
+		        startPosition.y,
 		        -startPosition.x * Mathf.Sin(yAngle * Mathf.Deg2Rad) + startPosition.z * Mathf.Cos(yAngle * Mathf.Deg2Rad));
 		pos += position;
 		thisTransform.position = pos;

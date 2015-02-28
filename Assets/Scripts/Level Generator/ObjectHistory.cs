@@ -186,7 +186,6 @@ public class ObjectHistory : MonoBehaviour
 		totalDistance[(int)Direction.Center] = totalDistance[(int)direction];
 		totalSceneDistance[(int)Direction.Center] = totalSceneDistance[(int)direction];
 		objectDirectionAngle[(int)Direction.Center] = objectDirectionAngle[(int)direction];
-		
 		platformDistanceDataMap[(int)Direction.Center].CopyFrom(platformDistanceDataMap[(int)direction]);
 		
 		previousPlatformSection[(int)Direction.Center] = previousPlatformSection[(int)direction];

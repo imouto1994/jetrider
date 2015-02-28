@@ -288,8 +288,9 @@ public class PlayerController : MonoBehaviour
 	// There are three slots on a track. Move left or right if there is a slot available
 	public void ChangeSlots(bool right)
 	{
-		SlotPosition targetSlot = (SlotPosition)Mathf.Clamp((int)currentSlotPosition + (right ? 1 : -1), (int)SlotPosition.Left, (int)SlotPosition.Right);
-		
+		SlotPosition targetSlot = (SlotPosition)Mathf.Clamp((int)currentSlotPosition + (right ? 1 : -1), 
+		                                                    (int)SlotPosition.Left, (int)SlotPosition.Right);
+
 		ChangeSlots(targetSlot);
 	}
 	

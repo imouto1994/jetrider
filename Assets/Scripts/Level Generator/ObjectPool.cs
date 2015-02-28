@@ -348,7 +348,6 @@ public class ObjectPool : MonoBehaviour
 			}
 
 			probabilityCache[objectIndex] = appearProbs[objectIndex].GetProbability(distance);
-			print (probabilityCache[objectIndex]);
 			totalProbability += probabilityCache[objectIndex];
 		}
 

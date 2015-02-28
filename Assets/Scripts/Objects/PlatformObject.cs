@@ -119,7 +119,6 @@ public class PlatformObject : BasicObject
 	public override void Orient(Vector3 position, Quaternion rotation)
 	{
 		base.Orient(position, rotation);
-		
 		// reset the number of collidables that have been spawned on top of the platform
 		numSpawnedCollidables = 0;
 	}
