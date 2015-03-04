@@ -36,7 +36,7 @@ public class SceneSpawnRules : SpawnRules
 			if (linkedPlatforms[i].AssignIndexToObject(targetObject, index)) {
 				PlatformObject platform = targetObject as PlatformObject;
 				platform.EnableLinkScenes();
-				(targetObject as SceneObject).isForSectionTransition = platform.isForSectionTransition;
+				(thisObject as SceneObject).isForSectionTransition = platform.isForSectionTransition;
 				break;
 			}
 		}

@@ -113,6 +113,7 @@ public class ObjectPool : MonoBehaviour
 				continue;
 			}
 			platformSizes[i] = platforms[i].GetComponent<Renderer>().bounds.size;
+			platformSizes[i].y = 0;
 		}
 		
 		// The parent scene object must represent the children's size
@@ -128,7 +129,7 @@ public class ObjectPool : MonoBehaviour
 			sceneSizes[i] = scenes[i].GetComponent<Renderer>().bounds.size;
 			sceneSizes[i] += scenes[i].centerOffset;
 			sceneSizes[i].y = 0;
-
+			print("Scene: " + sceneSizes[i]);
 			if (largestSceneLength < sceneSizes[i].z) {
 				largestSceneLength = sceneSizes[i].z;
 			}
