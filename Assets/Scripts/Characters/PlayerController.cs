@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
 	private int prevHitHashCode;
 	
 	private int platformLayer;
+	private int floorLayer;
 	private int wallLayer;
 	private int obstacleLayer;
 	
@@ -92,6 +93,7 @@ public class PlayerController : MonoBehaviour
 		}
 
 		platformLayer = 1 << LayerMask.NameToLayer("Platform");
+		floorLayer = 1 << LayerMask.NameToLayer("Floor");
 		wallLayer = LayerMask.NameToLayer("Wall");
 		obstacleLayer = LayerMask.NameToLayer("Obstacle");
 		
@@ -174,7 +176,9 @@ public class PlayerController : MonoBehaviour
 				// a hit distance of -1 means that the platform is within distance
 				hitDistance = -1;
 			}
-		} 
+		} else if (Physics.Raycast(thisTransform.position + capsuleCollider.center, -thisTransform.up, out hit, Mathf.Infinity, floorLayer)) {
+			hitDistance = hit.distance;
+		}
 		
 		if (hitDistance != -1) {
 			// a platform is beneith us but it is far away. If we are jumping apply the jump speed and gravity
@@ -283,6 +287,12 @@ public class PlayerController : MonoBehaviour
 		}
 
 		return true;
+	}
+
+	// Make character fly
+	public void Fly() 
+	{
+
 	}
 	
 	// There are three slots on a track. Move left or right if there is a slot available
