@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ObstacleObject : MonoBehaviour {
+public class ObstacleObject : CollidableObject {
 
 	// Use this for initialization
 	void Start () {

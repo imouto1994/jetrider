@@ -2,23 +2,29 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/* This class represents a sequence of InterpolatedValue objects
+ *	It is required to not have any overlaps in the sequence
+ *	The list of distances has to be in increasing order
+ */
+[System.Serializable]
 public class InterpolatedValueList
 {
-	// this array MUST be in order according to startDistance/EndDistance, with no overlap
 	public List<InterpolatedValue> values;
-	
+	private int[] endDistances;
+
+	// The sequence will loop back when reaching the end
 	public bool hasLoop;
 	public int loopBackToIndex = 0;	
 	private List<InterpolatedValue> loopedValues;
-
-	private int lastEndDistanceIndex;
-	private int[] endDistances;
 	private int[] loopedEndDistances;
+
+	// The index for end distance which is called last time
+	private int previousEndDistanceIndex;
 	
-	public InterpolatedValueList(bool l, int index)
+	public InterpolatedValueList(bool hasLoop, int loopBackToIndex)
 	{
-		hasLoop = l;
-		loopBackToIndex = index;
+		this.hasLoop = hasLoop;
+		this.loopBackToIndex = loopBackToIndex;
 	}
 	
 	public InterpolatedValueList(InterpolatedValue v)
@@ -26,14 +32,16 @@ public class InterpolatedValueList
 		values = new List<InterpolatedValue>();
 		values.Add(v);
 	}
-	
+
+	// Initialize function
 	public void Init()
 	{
 		endDistances = new int[values.Count];
-		lastEndDistanceIndex = 0;
+		previousEndDistanceIndex = 0;
 		for (int i = 0; i < endDistances.Length; ++i) {
 			endDistances[i] = values[i].endDistance;
 		}
+		// Setup if the sequence has loop
 		if (hasLoop) {
 			loopedValues = new List<InterpolatedValue>();
 			int startDistance = values[loopBackToIndex].startDistance;
@@ -48,46 +56,50 @@ public class InterpolatedValueList
 			}
 		}
 	}
-	
+
+	// Reset the values when you want to remove the cache of which index of end distances was used last time
 	public void ResetValues()
 	{
-		lastEndDistanceIndex = 0;
+		previousEndDistanceIndex = 0;
 	}
-	
+
+	// Get the number of intervals in the sequence
 	public int Count()
 	{
 		if (values == null)
 			return 0;
 		return values.Count;
 	}
-	
+
+	// Get the value according to the distance in the sequence
 	public float GetValue(float distance)
 	{
 		if (values.Count == 0)
 			return 0;
 		
-		bool looped = false;
+		bool isLooped = false;
 		if (hasLoop) {
 			float prevDistance = distance;
-			looped = (int)(distance / values[endDistances.Length - 1].endDistance) > 0;
-			if (looped) {
+			isLooped = (int)(distance / values[endDistances.Length - 1].endDistance) > 0;
+			if (isLooped) {
 				distance = (distance - values[loopBackToIndex].startDistance) % loopedValues[loopedEndDistances.Length - 1].endDistance;
 			} else {
 				distance = distance % values[endDistances.Length - 1].endDistance;
 			}
 			// reset lastEndDistanceIndex if the distance looped around
 			if (distance <= prevDistance) {
-				lastEndDistanceIndex = 0;
+				previousEndDistanceIndex = 0;
 			}
 		}
 		
-		if (looped) {
+		if (isLooped) {
 			return loopedValues[GetIndexFromDistance(distance, true)].GetInterpolatedValue(distance);
 		} else {
 			return values[GetIndexFromDistance(distance, false)].GetInterpolatedValue(distance);
 		}
 	}
-	
+
+	// Get the minimum and maximum values in the sequence
 	public void GetMinMaxValue(out float min, out float max)
 	{
 		max = float.MinValue;
@@ -109,15 +121,15 @@ public class InterpolatedValueList
 			}
 		}
 	}
-	
-	// Don't loop from the start of the list each time. Keep a cache of the latest index. This works because the 
-	// list is in order from the start distance to the end distance.
-	private int GetIndexFromDistance(float distance, bool useLoopedEndDistances)
+
+	// Get the corresponding index of interval from the given distance
+	// Don't loop from the start of the list each time. Keep a cache of the latest index.
+	private int GetIndexFromDistance(float distance, bool isLooped)
 	{
-		int[] distances = useLoopedEndDistances ? loopedEndDistances : endDistances;
-		for (int i = lastEndDistanceIndex; i < distances.Length; ++i) {
+		int[] distances = isLooped ? loopedEndDistances : endDistances;
+		for (int i = previousEndDistanceIndex; i < distances.Length; ++i) {
 			if (distance <= distances[i]) {
-				lastEndDistanceIndex = i;
+				previousEndDistanceIndex = i;
 				return i;
 			}
 		}

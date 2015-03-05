@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ScoreObject : MonoBehaviour {
+public class ScoreObject : CollidableObject {
 
 	// Use this for initialization
 	void Start () {
