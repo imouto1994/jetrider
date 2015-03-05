@@ -22,20 +22,25 @@ public class InputController : MonoBehaviour {
 	}
 
 	public void Update() {
+		// Turn
 		bool hasTurned = false;
 		if (Input.GetButtonDown("TurnLeft")) {
 			hasTurned = PlayerController.instance.Turn(IS_LEFT);
 		} else if (Input.GetButtonDown("TurnRight")) {
 			hasTurned = PlayerController.instance.Turn(IS_RIGHT);
 		}
-		
-		// can move horizontally if the player hasn't turned
+
 		if (!hasTurned) {
 			if (Input.GetButtonDown("GoLeft")) {
 				PlayerController.instance.ChangeSlots(IS_LEFT);
 			} else if (Input.GetButtonDown("GoRight")) {
 				PlayerController.instance.ChangeSlots(IS_RIGHT);
 			}
+		}
+
+		// Hovering
+		if (Input.GetButton("Fly")) {
+			PlayerController.instance.Fly();
 		}
 	}
 }
