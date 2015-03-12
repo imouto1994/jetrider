@@ -129,7 +129,6 @@ public class ObjectPool : MonoBehaviour
 			sceneSizes[i] = scenes[i].GetComponent<Renderer>().bounds.size;
 			sceneSizes[i] += scenes[i].centerOffset;
 			sceneSizes[i].y = 0;
-			print("Scene: " + sceneSizes[i]);
 			if (largestSceneLength < sceneSizes[i].z) {
 				largestSceneLength = sceneSizes[i].z;
 			}
