@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ScoreObject : CollidableObject {
+public class DonutObject : CollidableObject {
 
 	// Use this for initialization
 	void Start () {
