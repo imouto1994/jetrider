@@ -7,6 +7,7 @@ using System.Collections;
 [RequireComponent(typeof(Collider))]
 public class DonutObject : CollidableObject 
 {
+	//modify in Unity editor
 	public int pointsPerDonut = 100;
 	private int playerLayer;
 
