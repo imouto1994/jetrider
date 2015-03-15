@@ -350,25 +350,6 @@ public class PlayerController : MonoBehaviour
 	{
 		return !onGround;
 	}
-
-	// the player collided with an obstacle, play some particle effects
-	public void ObstacleCollision(Transform obstacle, Vector3 position)
-	{
-		if (!enabled)
-			return;
-
-		// stumble
-		if (stumbleDuration > 0) {
-			isStumbling = true;
-			StartCoroutine("Stumble");
-		}
-	}
-	
-	private IEnumerator Stumble()
-	{
-		yield return new WaitForSeconds(stumbleDuration);
-		isStumbling = false;
-	}
 	
 	public void GameOver()
 	{

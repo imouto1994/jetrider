@@ -5,17 +5,17 @@ using System.Collections;
 [RequireComponent(typeof(CollidableSpawnRules))]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Collider))]
-public class FuelObject : CollidableObject {
-
-	public int fuelGain = 100;
+public class DonutObject : CollidableObject 
+{
+	public int pointsPerDonut = 100;
 	private int playerLayer;
-	
+
 	public override void Init()
 	{
 		base.Init();
 		objectType = ObjectType.Donut;
 	}
-	
+
 	public override void Awake()
 	{
 		base.Awake();
@@ -23,15 +23,16 @@ public class FuelObject : CollidableObject {
 	}
 	
 	public void OnTriggerEnter(Collider other)
-	{
+	{	
+		print("WTF");
 		if (other.gameObject.layer == playerLayer) {
-			CollectFuel();
+			CollectCoin();
 		}
 	}
-		
-	public void CollectFuel()
+	
+	public void CollectCoin()
 	{
-		FuelTracker.instance.IncreaseFuel(fuelGain);
+		PointTracker.instance.IncreasePoints(pointsPerDonut);
 		Deactivate();
 	}
 }
