@@ -2,7 +2,9 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class PointTracker : MonoBehaviour {
+public class PointTracker : MonoBehaviour 
+{
+	static public PointTracker instance;
 
 	public Text pointsText;
 	public int ticksPerSecond  = 1;
@@ -11,22 +13,25 @@ public class PointTracker : MonoBehaviour {
 	private float points;
 	//private const string POINTS_TEXT = "Points: ";
 
+	public void Awake() 
+	{
+		instance = this;
+	}
+
 	// Use this for initialization
-	void Start () {
+	public void Start () {
 		points = 0.0f;
 		float tickInterval = 1.0f / ticksPerSecond;
 		InvokeRepeating("AutoIncreasePointsPerTick", 0.001f, tickInterval);
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	public void UpdateText() {
+		if(pointsText != null) {
+			pointsText.GetComponent<Text>().text =  points.ToString();
+		}
 	}
 
-	void UpdateText() {
-		pointsText.GetComponent<Text>().text =  points.ToString();
-	}
-
-	void AutoIncreasePointsPerTick() {
+	public void AutoIncreasePointsPerTick() {
 		points += pointsPerTick;
 		UpdateText();
 	}

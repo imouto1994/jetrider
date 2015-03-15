@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 /* Add additional check if this object can spawn on the current platform */
-public class CollidableAppearanceRules : SpawnRules
+public class CollidableSpawnRules : SpawnRules
 {
 	// platforms in which the object cannot spawn over
 	public List<PlatformLinkRule> avoidPlatforms;

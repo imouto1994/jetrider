@@ -2,7 +2,9 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class FuelTracker : MonoBehaviour {
+public class FuelTracker : MonoBehaviour 
+{
+	static public FuelTracker instance;
 
 	public Slider fuelBar;
 
@@ -10,15 +12,22 @@ public class FuelTracker : MonoBehaviour {
 	private float maxFuel;
 	private float minFuel;
 
+	public void Awake() 
+	{
+		instance = this;		
+	}
+
 	// Use this for initialization
-	void Start () {
+	public void Start() 
+	{
 		fuel = 0.0f;
 		maxFuel = 100.0f;
 		minFuel = 0.0f;
 		UpdateFuelBar();
 	}
 
-	public void IncreaseFuel(float fuelGain) {
+	public void IncreaseFuel(float fuelGain) 
+	{
 		Debug.Log ("Player picked up fuel");
 		fuel += fuelGain;
 
@@ -28,7 +37,8 @@ public class FuelTracker : MonoBehaviour {
 		UpdateFuelBar();
 	}
 
-	public void DecreaseFuel(float fuelDrain) {
+	public void DecreaseFuel(float fuelDrain) 
+	{
 		Debug.Log ("Draining fuel");
 		fuel -= fuelDrain;
 
@@ -38,7 +48,10 @@ public class FuelTracker : MonoBehaviour {
 		UpdateFuelBar();
 	}
 
-	private void UpdateFuelBar() {
-		fuelBar.value = (fuel / 100.0f);
+	private void UpdateFuelBar() 
+	{	
+		if (fuelBar != null) {
+			fuelBar.value = (fuel / 100.0f);
+		}
 	}
 }

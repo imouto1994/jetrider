@@ -1,15 +1,38 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DonutObject : CollidableObject {
+[RequireComponent(typeof(SpawnProbs))]
+[RequireComponent(typeof(CollidableSpawnRules))]
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Collider))]
+public class DonutObject : CollidableObject 
+{
+	public int pointsPerDonut = 100;
+	private int playerLayer;
 
-	// Use this for initialization
-	void Start () {
-	
+	public override void Init()
+	{
+		base.Init();
+		objectType = ObjectType.Donut;
+	}
+
+	public override void Awake()
+	{
+		base.Awake();
+		playerLayer = LayerMask.NameToLayer("Player");
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	public void OnTriggerEnter(Collider other)
+	{	
+		print("WTF");
+		if (other.gameObject.layer == playerLayer) {
+			CollectCoin();
+		}
+	}
 	
+	public void CollectCoin()
+	{
+		PointTracker.instance.IncreasePoints(pointsPerDonut);
+		Deactivate();
 	}
 }
