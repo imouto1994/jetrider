@@ -1,0 +1,1057 @@
+fileFormatVersion: 2
+guid: 39432c8cf37fa6640a055f886d66c392
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: blendShapes01
+    100002: c_spline_01
+    100004: //RootNode
+    100006: character_mesh01
+    100008: controlObjects01
+    100010: ctrl_elbow_L01
+    100012: ctrl_elbow_R01
+    100014: ctrl_fingers_L01
+    100016: ctrl_fingers_R01
+    100018: ctrl_foot_L01
+    100020: ctrl_foot_R01
+    100022: ctrl_head_01
+    100024: ctrl_inch_L01
+    100026: ctrl_inch_R01
+    100028: ctrl_knee_L01
+    100030: ctrl_knee_R01
+    100032: ctrl_main_01
+    100034: ctrl_shoulder_L01
+    100036: ctrl_shoulder_R01
+    100038: ctrl_spine_A01
+    100040: ctrl_spine_B01
+    100042: ctrl_wrist_L01
+    100044: ctrl_wrist_R01
+    100046: extraNodes01
+    100048: globalMove01
+    100050: grp_fingers_L01
+    100052: grp_fingers_R01
+    100054: grp_inch_L01
+    100056: grp_inch_R01
+    100058: ik_elbow_L01
+    100060: ik_elbow_R01
+    100062: ik_knee_L01
+    100064: ik_knee_R01
+    100066: ik_spline_01
+    100068: iks01
+    100070: joints01
+    100072: jt_ankle_L01
+    100074: jt_ankle_R01
+    100076: jt_arm_L01
+    100078: jt_arm_R01
+    100080: jt_ctrl_spine_A01
+    100082: jt_ctrl_spine_B01
+    100084: jt_drive_neck_01
+    100086: jt_drive_spine_A01
+    100088: jt_drive_spine_B01
+    100090: jt_driver
+    100092: jt_elbow_L01
+    100094: jt_elbow_R01
+    100096: jt_fingers_L01
+    100098: jt_fingers_R01
+    100100: jt_fingersEnd_L01
+    100102: jt_fingersEnd_R01
+    100104: jt_footEnd_L01
+    100106: jt_footEnd_R01
+    100108: jt_headEnd_01
+    100110: jt_hip_L01
+    100112: jt_hip_R01
+    100114: jt_inch_L01
+    100116: jt_inch_R01
+    100118: jt_inchEnd_L01
+    100120: jt_inchEnd_R01
+    100122: jt_knee_L01
+    100124: jt_knee_R01
+    100126: jt_main_01
+    100128: jt_neck_01
+    100130: jt_shoulder_L01
+    100132: jt_shoulder_R01
+    100134: jt_spine_A01
+    100136: jt_spine_B01
+    100138: jt_wrist_L01
+    100140: jt_wrist_R01
+    100142: model01
+    100144: to_transform01
+    100146: trns_toHide01
+    100148: trns_toShow01
+    100150: xtra_toHide01
+    100152: xtra_toShow01
+    400000: blendShapes01
+    400002: c_spline_01
+    400004: //RootNode
+    400006: character_mesh01
+    400008: controlObjects01
+    400010: ctrl_elbow_L01
+    400012: ctrl_elbow_R01
+    400014: ctrl_fingers_L01
+    400016: ctrl_fingers_R01
+    400018: ctrl_foot_L01
+    400020: ctrl_foot_R01
+    400022: ctrl_head_01
+    400024: ctrl_inch_L01
+    400026: ctrl_inch_R01
+    400028: ctrl_knee_L01
+    400030: ctrl_knee_R01
+    400032: ctrl_main_01
+    400034: ctrl_shoulder_L01
+    400036: ctrl_shoulder_R01
+    400038: ctrl_spine_A01
+    400040: ctrl_spine_B01
+    400042: ctrl_wrist_L01
+    400044: ctrl_wrist_R01
+    400046: extraNodes01
+    400048: globalMove01
+    400050: grp_fingers_L01
+    400052: grp_fingers_R01
+    400054: grp_inch_L01
+    400056: grp_inch_R01
+    400058: ik_elbow_L01
+    400060: ik_elbow_R01
+    400062: ik_knee_L01
+    400064: ik_knee_R01
+    400066: ik_spline_01
+    400068: iks01
+    400070: joints01
+    400072: jt_ankle_L01
+    400074: jt_ankle_R01
+    400076: jt_arm_L01
+    400078: jt_arm_R01
+    400080: jt_ctrl_spine_A01
+    400082: jt_ctrl_spine_B01
+    400084: jt_drive_neck_01
+    400086: jt_drive_spine_A01
+    400088: jt_drive_spine_B01
+    400090: jt_driver
+    400092: jt_elbow_L01
+    400094: jt_elbow_R01
+    400096: jt_fingers_L01
+    400098: jt_fingers_R01
+    400100: jt_fingersEnd_L01
+    400102: jt_fingersEnd_R01
+    400104: jt_footEnd_L01
+    400106: jt_footEnd_R01
+    400108: jt_headEnd_01
+    400110: jt_hip_L01
+    400112: jt_hip_R01
+    400114: jt_inch_L01
+    400116: jt_inch_R01
+    400118: jt_inchEnd_L01
+    400120: jt_inchEnd_R01
+    400122: jt_knee_L01
+    400124: jt_knee_R01
+    400126: jt_main_01
+    400128: jt_neck_01
+    400130: jt_shoulder_L01
+    400132: jt_shoulder_R01
+    400134: jt_spine_A01
+    400136: jt_spine_B01
+    400138: jt_wrist_L01
+    400140: jt_wrist_R01
+    400142: model01
+    400144: to_transform01
+    400146: trns_toHide01
+    400148: trns_toShow01
+    400150: xtra_toHide01
+    400152: xtra_toShow01
+    4300000: character_mesh01
+    7400000: idle
+    7400002: run
+    7400004: walk
+    7400006: walkback
+    7400008: runback
+    7400010: left
+    7400012: right
+    7400014: jump
+    7400016: die
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: character_mesh01
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 3
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: idle
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: walk
+      takeName: Take 001
+      firstFrame: 34
+      lastFrame: 66
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: run
+      takeName: Take 001
+      firstFrame: 68
+      lastFrame: 84
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: walkback
+      takeName: Take 001
+      firstFrame: 86
+      lastFrame: 118
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: runback
+      takeName: Take 001
+      firstFrame: 120
+      lastFrame: 140
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: left
+      takeName: Take 001
+      firstFrame: 142
+      lastFrame: 166
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: right
+      takeName: Take 001
+      firstFrame: 168
+      lastFrame: 192
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: jump
+      takeName: Take 001
+      firstFrame: 194
+      lastFrame: 220
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: die
+      takeName: Take 001
+      firstFrame: 222
+      lastFrame: 246
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human:
+    - boneName: jt_spine_A01
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_hip_L01
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_hip_R01
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_knee_L01
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_knee_R01
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_ankle_L01
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_ankle_R01
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_spine_B01
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_neck_01
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_headEnd_01
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_shoulder_L01
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_shoulder_R01
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_arm_L01
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_arm_R01
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_elbow_L01
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_elbow_R01
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_wrist_L01
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_wrist_R01
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_inch_L01
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_inchEnd_L01
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_fingers_L01
+      humanName: Left Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_fingersEnd_L01
+      humanName: Left Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_inch_R01
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_inchEnd_R01
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_fingers_R01
+      humanName: Right Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: jt_fingersEnd_R01
+      humanName: Right Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: character(Clone)
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: blendShapes01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ctrl_main_01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: extraNodes01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: xtra_toHide01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: c_spline_01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: xtra_toShow01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: globalMove01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: controlObjects01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ctrl_elbow_L01
+      position: {x: -4.85802794, y: 7.99761486, z: -3.6058166}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ctrl_elbow_R01
+      position: {x: 4.74241781, y: 7.83987379, z: -3.57781386}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ctrl_foot_L01
+      position: {x: -1.34076762, y: 1.44105375, z: -.84437722}
+      rotation: {x: 0, y: -.0574758798, z: -0, w: .998346925}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ctrl_foot_R01
+      position: {x: 1.37714672, y: 1.44105375, z: -.159847379}
+      rotation: {x: 0, y: .0444726124, z: -0, w: .999010623}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ctrl_head_01
+      position: {x: -.0205769055, y: 9.82448673, z: -.055483073}
+      rotation: {x: -.0170819052, y: 0, z: -0, w: .999854147}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ctrl_knee_L01
+      position: {x: -1.82148373, y: 3.46992278, z: 3.3564105}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ctrl_knee_R01
+      position: {x: 1.48094797, y: 3.43244529, z: 3.37450862}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ctrl_shoulder_L01
+      position: {x: -2.14034104, y: 10.1134663, z: -.192872897}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ctrl_shoulder_R01
+      position: {x: 2.14034009, y: 10.1134815, z: -.192872941}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ctrl_spine_A01
+      position: {x: -.0205769055, y: 5.49555445, z: -.341795623}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ctrl_spine_B01
+      position: {x: -.0205769055, y: 8.00918579, z: -.182486609}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ctrl_wrist_L01
+      position: {x: -2.74654078, y: 5.44011641, z: -.348048985}
+      rotation: {x: .101974256, y: .0752935857, z: .671664298, w: .729930997}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ctrl_wrist_R01
+      position: {x: 2.73114371, y: 5.41716623, z: -.527719855}
+      rotation: {x: .094699204, y: -.101949461, z: -.711733878, w: .688529789}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: grp_fingers_L01
+      position: {x: -2.91940594, y: 4.22735882, z: -.24557589}
+      rotation: {x: .101974256, y: .0752935857, z: .671664298, w: .729930997}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ctrl_fingers_L01
+      position: {x: -3.38813179e-21, y: 0, z: -2.77555756e-17}
+      rotation: {x: 0, y: 0, z: .165763438, w: .986165583}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: grp_fingers_R01
+      position: {x: 2.75355935, y: 4.19660139, z: -.383633852}
+      rotation: {x: .094699204, y: -.101949461, z: -.711733878, w: .688529789}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ctrl_fingers_R01
+      position: {x: -0, y: 0, z: 2.11758237e-22}
+      rotation: {x: 0, y: 0, z: -.107192524, w: .994238317}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: grp_inch_L01
+      position: {x: -2.53135347, y: 4.66347313, z: .5660007}
+      rotation: {x: -.133898258, y: .320403934, z: .666035235, w: .660158813}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ctrl_inch_L01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -.0108182617, y: -.0615852922, z: .0659560114, w: .995861471}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: grp_inch_R01
+      position: {x: 2.4007051, y: 4.70303535, z: .40275535}
+      rotation: {x: -.154439181, y: -.331292212, z: -.701200128, w: .612137556}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ctrl_inch_R01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: .0599986874, y: .0497108847, z: -.084914878, w: .993337035}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: iks01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ik_elbow_L01
+      position: {x: -2.74654078, y: 5.44011641, z: -.348048985}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ik_elbow_R01
+      position: {x: 2.73114371, y: 5.41716623, z: -.527719855}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ik_knee_L01
+      position: {x: -1.34076762, y: 1.44105375, z: -.84437722}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ik_knee_R01
+      position: {x: 1.37714672, y: 1.44105375, z: -.159847379}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ik_spline_01
+      position: {x: -.0205769055, y: 9.82448673, z: -.055483073}
+      rotation: {x: .014967557, y: .696922481, z: .0326759741, w: .716245294}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: joints01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: jt_driver
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: jt_ctrl_spine_A01
+      position: {x: -.0205769055, y: 5.49555445, z: -.341795623}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: jt_ctrl_spine_B01
+      position: {x: -.0205769055, y: 8.00918579, z: -.182486609}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: jt_drive_spine_A01
+      position: {x: -.0205769055, y: 5.49555445, z: -.341795623}
+      rotation: {x: -.487377524, y: .512311637, z: -.487377524, w: .512311637}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: jt_drive_spine_B01
+      position: {x: -2.55902076, y: -.0346102342, z: 1.38940974e-15}
+      rotation: {x: .00034528214, y: -.0185299926, z: .713154495, w: .700761855}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: jt_drive_neck_01
+      position: {x: -.00374027202, y: 1.77855098, z: .0462762937}
+      rotation: {x: 2.94245456e-06, y: -.00139953499, z: -3.64151601e-05, w: .999999046}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: jt_main_01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: -.705676794, w: .708533943}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: jt_spine_A01
+      position: {x: -4.54620314, y: -.00220673159, z: -.341795623}
+      rotation: {x: -.704257011, y: .0634198785, z: .0605737567, w: .704507589}
+      scale: {x: 1, y: .99999994, z: .999999762}
+      transformModified: 1
+    - name: jt_hip_L01
+      position: {x: .26870209, y: -.0456350297, z: -1.10447991}
+      rotation: {x: -.0182257723, y: -.999704778, z: -.0159893464, w: -.00159051991}
+      scale: {x: .999999881, y: .99999994, z: .999999881}
+      transformModified: 1
+    - name: jt_knee_L01
+      position: {x: -1.90443993, y: -.321435124, z: .0938686728}
+      rotation: {x: .996090531, y: .0883381292, z: -5.96046377e-08, w: -1.49011594e-08}
+      scale: {x: 1.00000012, y: 1.00000036, z: 1.00000036}
+      transformModified: 1
+    - name: jt_ankle_L01
+      position: {x: -1.84018278, y: -.340913981, z: -.121842116}
+      rotation: {x: -2.98023188e-08, y: 0, z: -.607934296, w: .793987334}
+      scale: {x: .999999821, y: 1, z: 1.00000012}
+      transformModified: 1
+    - name: jt_footEnd_L01
+      position: {x: -2.80434346, y: -.0785661787, z: -.104293115}
+      rotation: {x: -.0804103687, y: -.702519894, z: -.0804103389, w: .702519894}
+      scale: {x: 1, y: 1.00000012, z: 1.00000012}
+      transformModified: 1
+    - name: jt_hip_R01
+      position: {x: .268702388, y: -.0456349775, z: 1.10447991}
+      rotation: {x: -.99979645, y: .0141446255, z: -.00442010071, w: -.0136902742}
+      scale: {x: 1.00000048, y: 1.00000012, z: 1.00000048}
+      transformModified: 1
+    - name: jt_knee_R01
+      position: {x: 1.90444005, y: .321434081, z: -.093866989}
+      rotation: {x: -.995345354, y: -.0963686556, z: -.000806108001, w: .00045719737}
+      scale: {x: .999999762, y: .999999583, z: .999999285}
+      transformModified: 1
+    - name: jt_ankle_R01
+      position: {x: 1.84018314, y: .340913028, z: .121841997}
+      rotation: {x: 8.19563652e-08, y: 0, z: -.607934356, w: .793987334}
+      scale: {x: .999999762, y: .999999821, z: 1}
+      transformModified: 1
+    - name: jt_footEnd_R01
+      position: {x: 2.80434275, y: .0785630345, z: .104291998}
+      rotation: {x: -.0804104358, y: -.702520013, z: -.0804102942, w: .702519834}
+      scale: {x: 1, y: .999999821, z: 1}
+      transformModified: 1
+    - name: jt_spine_B01
+      position: {x: -2.54316783, y: .286500454, z: 1.54390389e-15}
+      rotation: {x: -.00194784976, y: -.0173066612, z: .665897489, w: .745840073}
+      scale: {x: 1, y: .999999881, z: 1}
+      transformModified: 1
+    - name: jt_shoulder_L01
+      position: {x: .0933419093, y: 2.11331749, z: -2.06833649}
+      rotation: {x: .201608405, y: -.668547451, z: -.248833448, w: .671178222}
+      scale: {x: .99999994, y: 1, z: .999999762}
+      transformModified: 1
+    - name: jt_arm_L01
+      position: {x: -.387256145, y: -.51517576, z: 2.22044605e-16}
+      rotation: {x: -.0580916852, y: .0724727064, z: .281952888, w: .954921842}
+      scale: {x: 1.00000024, y: .999999762, z: 1}
+      transformModified: 1
+    - name: jt_elbow_L01
+      position: {x: -2.26370025, y: .0112014767, z: -.423821926}
+      rotation: {x: .00338655454, y: -.0449820235, z: .0298199691, w: .998536944}
+      scale: {x: .999999762, y: 1.00000012, z: .999999881}
+      transformModified: 1
+    - name: jt_wrist_L01
+      position: {x: -2.02941775, y: -.0361376368, z: -.0287154987}
+      rotation: {x: -.000238214809, y: .0247761291, z: .00961112417, w: .999646783}
+      scale: {x: 1, y: .999999821, z: 1}
+      transformModified: 1
+    - name: jt_fingers_L01
+      position: {x: -1.22407627, y: .0995487645, z: .053775385}
+      rotation: {x: -.000142259858, y: -.0247328635, z: -.00921170227, w: .99965167}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: jt_fingersEnd_L01
+      position: {x: -1.24483633, y: -.0874803141, z: -.00611418393}
+      rotation: {x: 8.8047706e-08, y: .0067563965, z: 6.08647284e-08, w: .999977231}
+      scale: {x: 1.00000012, y: 1, z: 1}
+      transformModified: 1
+    - name: jt_inch_L01
+      position: {x: -.777429163, y: -.0372439288, z: .937648118}
+      rotation: {x: .0105581954, y: .0955112576, z: -.102136426, w: .990118325}
+      scale: {x: 1.00000012, y: 1, z: 1}
+      transformModified: 1
+    - name: jt_inchEnd_L01
+      position: {x: -.882807791, y: -.159065574, z: -.0136726564}
+      rotation: {x: 6.35900221e-08, y: -.325366378, z: -5.09316811e-09, w: .945587993}
+      scale: {x: 1.00000012, y: 1.00000024, z: .999999881}
+      transformModified: 1
+    - name: jt_shoulder_R01
+      position: {x: .192749158, y: 2.00223017, z: 2.20974827}
+      rotation: {x: .684634149, y: .208984211, z: .653913081, w: .244947374}
+      scale: {x: 1.00000012, y: .999999881, z: .999999881}
+      transformModified: 1
+    - name: jt_arm_R01
+      position: {x: .346101999, y: .515179992, z: -2.00000002e-07}
+      rotation: {x: -.063254714, y: .0704437643, z: .309262156, w: .946252286}
+      scale: {x: 1.00000024, y: .999999821, z: 1}
+      transformModified: 1
+    - name: jt_elbow_R01
+      position: {x: 2.26370025, y: -.0112094246, z: .423821926}
+      rotation: {x: .00346406782, y: -.0459178835, z: .0288828351, w: .998521626}
+      scale: {x: 1, y: .99999994, z: 1.00000012}
+      transformModified: 1
+    - name: jt_wrist_R01
+      position: {x: 2.02944446, y: .0361370631, z: .0287154727}
+      rotation: {x: -.000238202658, y: .0247761104, z: .00961110927, w: .999646783}
+      scale: {x: 1.00000012, y: .999999821, z: .999999821}
+      transformModified: 1
+    - name: jt_fingers_R01
+      position: {x: 1.22402704, y: -.0995400026, z: -.0537778959}
+      rotation: {x: -.000142234916, y: -.024732329, z: -.00921168737, w: .99965173}
+      scale: {x: 1, y: 1.00000012, z: 1.00000012}
+      transformModified: 1
+    - name: jt_fingersEnd_R01
+      position: {x: 1.24483621, y: .0874800012, z: .0061143823}
+      rotation: {x: -4.08277714e-08, y: .00675636251, z: -2.74157976e-08, w: .999977171}
+      scale: {x: .999999881, y: 1, z: 1.00000012}
+      transformModified: 1
+    - name: jt_inch_R01
+      position: {x: .777424753, y: .0372599997, z: -.937645435}
+      rotation: {x: .01055717, y: .095502831, z: -.10213419, w: .990119398}
+      scale: {x: .999999881, y: 1.00000012, z: 1.00000024}
+      transformModified: 1
+    - name: jt_inchEnd_R01
+      position: {x: .882790148, y: .159060001, z: .0136533594}
+      rotation: {x: 1.04046161e-09, y: -.325366259, z: -8.73987744e-08, w: .945588052}
+      scale: {x: 1, y: 1.00000012, z: 1.00000012}
+      transformModified: 1
+    - name: jt_neck_01
+      position: {x: -.012631245, y: 1.77850473, z: .0464816839}
+      rotation: {x: .0129809789, y: .0116107725, z: .000150635824, w: .999848366}
+      scale: {x: .99999994, y: 1, z: 1.00000012}
+      transformModified: 1
+    - name: jt_headEnd_01
+      position: {x: .468532383, y: 4.7293787, z: .0205769055}
+      rotation: {x: -.0131742256, y: -.697159946, z: -.0309413597, w: .716126502}
+      scale: {x: .99999994, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: to_transform01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: trns_toHide01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: trns_toShow01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: character_mesh01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  additionalBone: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

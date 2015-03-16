@@ -1,0 +1,247 @@
+fileFormatVersion: 2
+guid: 61d0c4f833ccb481a868669b5d97502d
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: jetpack_arm
+    100002: jetpack_arm control_relay
+    100004: jetpack_arm control_relay button1
+    100006: jetpack_arm control_relay button9
+    100008: jetpack_arm control_relay frames
+    100010: jetpack_arm control_relay switches
+    100012: jetpack_arm handle
+    100014: jetpack_arm handle grip
+    100016: jetpack_arm handle trim
+    100018: jetpack_back_support
+    100020: jetpack_hoses
+    100022: jetpack_hoses colector
+    100024: jetpack_hoses connector
+    100026: jetpack_hoses connector lower_ring
+    100028: jetpack_hoses connector upper_ring
+    100030: jetpack_hoses nozzle
+    100032: jetpack_main_box
+    100034: jetpack_main_box discs
+    100036: jetpack_main_box hazard_stripe
+    100038: jetpack_main_box lower_box
+    100040: jetpack_main_box lower_box button2
+    100042: jetpack_main_box lower_box button3
+    100044: jetpack_main_box lower_box button8
+    100046: jetpack_main_box lower_box frames1
+    100048: jetpack_main_box upper_box
+    100050: jetpack_main_box upper_box button
+    100052: jetpack_main_box upper_box button4
+    100054: jetpack_main_box upper_box button5
+    100056: jetpack_main_box upper_box button6
+    100058: jetpack_main_box upper_box button7
+    100060: jetpack_main_box upper_box frames2
+    100062: jetpack_middle_bar
+    100064: jetpack_tanks
+    100066: jetpack_tanks cap
+    100068: jetpack_tanks cuts
+    100070: jetpack_tanks rings
+    100072: jetpack_tanks rods
+    100074: //RootNode
+    400000: jetpack_arm
+    400002: jetpack_arm control_relay
+    400004: jetpack_arm control_relay button1
+    400006: jetpack_arm control_relay button9
+    400008: jetpack_arm control_relay frames
+    400010: jetpack_arm control_relay switches
+    400012: jetpack_arm handle
+    400014: jetpack_arm handle grip
+    400016: jetpack_arm handle trim
+    400018: jetpack_back_support
+    400020: jetpack_hoses
+    400022: jetpack_hoses colector
+    400024: jetpack_hoses connector
+    400026: jetpack_hoses connector lower_ring
+    400028: jetpack_hoses connector upper_ring
+    400030: jetpack_hoses nozzle
+    400032: jetpack_main_box
+    400034: jetpack_main_box discs
+    400036: jetpack_main_box hazard_stripe
+    400038: jetpack_main_box lower_box
+    400040: jetpack_main_box lower_box button2
+    400042: jetpack_main_box lower_box button3
+    400044: jetpack_main_box lower_box button8
+    400046: jetpack_main_box lower_box frames1
+    400048: jetpack_main_box upper_box
+    400050: jetpack_main_box upper_box button
+    400052: jetpack_main_box upper_box button4
+    400054: jetpack_main_box upper_box button5
+    400056: jetpack_main_box upper_box button6
+    400058: jetpack_main_box upper_box button7
+    400060: jetpack_main_box upper_box frames2
+    400062: jetpack_middle_bar
+    400064: jetpack_tanks
+    400066: jetpack_tanks cap
+    400068: jetpack_tanks cuts
+    400070: jetpack_tanks rings
+    400072: jetpack_tanks rods
+    400074: //RootNode
+    2300000: jetpack_arm
+    2300002: jetpack_arm control_relay
+    2300004: jetpack_arm control_relay button1
+    2300006: jetpack_arm control_relay button9
+    2300008: jetpack_arm control_relay frames
+    2300010: jetpack_arm control_relay switches
+    2300012: jetpack_arm handle
+    2300014: jetpack_arm handle grip
+    2300016: jetpack_arm handle trim
+    2300018: jetpack_back_support
+    2300020: jetpack_hoses
+    2300022: jetpack_hoses colector
+    2300024: jetpack_hoses connector
+    2300026: jetpack_hoses connector lower_ring
+    2300028: jetpack_hoses connector upper_ring
+    2300030: jetpack_hoses nozzle
+    2300032: jetpack_main_box
+    2300034: jetpack_main_box discs
+    2300036: jetpack_main_box hazard_stripe
+    2300038: jetpack_main_box lower_box
+    2300040: jetpack_main_box lower_box button2
+    2300042: jetpack_main_box lower_box button3
+    2300044: jetpack_main_box lower_box button8
+    2300046: jetpack_main_box lower_box frames1
+    2300048: jetpack_main_box upper_box
+    2300050: jetpack_main_box upper_box button
+    2300052: jetpack_main_box upper_box button4
+    2300054: jetpack_main_box upper_box button5
+    2300056: jetpack_main_box upper_box button6
+    2300058: jetpack_main_box upper_box button7
+    2300060: jetpack_main_box upper_box frames2
+    2300062: jetpack_middle_bar
+    2300064: jetpack_tanks
+    2300066: jetpack_tanks cap
+    2300068: jetpack_tanks cuts
+    2300070: jetpack_tanks rings
+    2300072: jetpack_tanks rods
+    3300000: jetpack_arm
+    3300002: jetpack_arm control_relay
+    3300004: jetpack_arm control_relay button1
+    3300006: jetpack_arm control_relay button9
+    3300008: jetpack_arm control_relay frames
+    3300010: jetpack_arm control_relay switches
+    3300012: jetpack_arm handle
+    3300014: jetpack_arm handle grip
+    3300016: jetpack_arm handle trim
+    3300018: jetpack_back_support
+    3300020: jetpack_hoses
+    3300022: jetpack_hoses colector
+    3300024: jetpack_hoses connector
+    3300026: jetpack_hoses connector lower_ring
+    3300028: jetpack_hoses connector upper_ring
+    3300030: jetpack_hoses nozzle
+    3300032: jetpack_main_box
+    3300034: jetpack_main_box discs
+    3300036: jetpack_main_box hazard_stripe
+    3300038: jetpack_main_box lower_box
+    3300040: jetpack_main_box lower_box button2
+    3300042: jetpack_main_box lower_box button3
+    3300044: jetpack_main_box lower_box button8
+    3300046: jetpack_main_box lower_box frames1
+    3300048: jetpack_main_box upper_box
+    3300050: jetpack_main_box upper_box button
+    3300052: jetpack_main_box upper_box button4
+    3300054: jetpack_main_box upper_box button5
+    3300056: jetpack_main_box upper_box button6
+    3300058: jetpack_main_box upper_box button7
+    3300060: jetpack_main_box upper_box frames2
+    3300062: jetpack_middle_bar
+    3300064: jetpack_tanks
+    3300066: jetpack_tanks cap
+    3300068: jetpack_tanks cuts
+    3300070: jetpack_tanks rings
+    3300072: jetpack_tanks rods
+    4300000: jetpack_arm
+    4300002: jetpack_arm control_relay
+    4300004: jetpack_arm control_relay button1
+    4300006: jetpack_arm control_relay button9
+    4300008: jetpack_arm control_relay frames
+    4300010: jetpack_arm control_relay switches
+    4300012: jetpack_arm handle
+    4300014: jetpack_arm handle grip
+    4300016: jetpack_arm handle trim
+    4300018: jetpack_back_support
+    4300020: jetpack_hoses
+    4300022: jetpack_hoses colector
+    4300024: jetpack_hoses connector
+    4300026: jetpack_hoses connector lower_ring
+    4300028: jetpack_hoses connector upper_ring
+    4300030: jetpack_hoses nozzle
+    4300032: jetpack_main_box
+    4300034: jetpack_main_box discs
+    4300036: jetpack_main_box hazard_stripe
+    4300038: jetpack_main_box lower_box
+    4300040: jetpack_main_box lower_box button2
+    4300042: jetpack_main_box lower_box button3
+    4300044: jetpack_main_box lower_box button8
+    4300046: jetpack_main_box lower_box frames1
+    4300048: jetpack_main_box upper_box
+    4300050: jetpack_main_box upper_box button
+    4300052: jetpack_main_box upper_box button4
+    4300054: jetpack_main_box upper_box button5
+    4300056: jetpack_main_box upper_box button6
+    4300058: jetpack_main_box upper_box button7
+    4300060: jetpack_main_box upper_box frames2
+    4300062: jetpack_middle_bar
+    4300064: jetpack_tanks
+    4300066: jetpack_tanks cap
+    4300068: jetpack_tanks cuts
+    4300070: jetpack_tanks rings
+    4300072: jetpack_tanks rods
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
