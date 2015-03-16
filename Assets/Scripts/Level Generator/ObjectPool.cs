@@ -74,7 +74,7 @@ public class ObjectPool : MonoBehaviour
 		probabilityCache = new List<float>();
 		objectCanSpawnCache = new List<bool>();
 		
-		int totalObjs = platforms.Length + scenes.Length + obstacles.Length + donuts.Length + powerUps.Length;
+		int totalObjs = platforms.Length + scenes.Length + obstacles.Length + donuts.Length + fuels.Length + powerUps.Length;
 		BasicObject currentObject;
 		for (int i = 0; i < totalObjs; ++i) {
 			objectsPool.Add(new List<BasicObject>());
@@ -292,7 +292,7 @@ public class ObjectPool : MonoBehaviour
 	// Returns the number of total objects
 	public int GetTotalObjectCount()
 	{
-		return platforms.Length + scenes.Length + obstacles.Length + donuts.Length + powerUps.Length;
+		return platforms.Length + scenes.Length + obstacles.Length + donuts.Length + fuels.Length + powerUps.Length;
 	}
 	
 	// Retrieve object from the given object indexs
@@ -306,8 +306,10 @@ public class ObjectPool : MonoBehaviour
 			return obstacles[objectIndex - platforms.Length - scenes.Length];
 		} else if (objectIndex < platforms.Length + scenes.Length + obstacles.Length + donuts.Length) {
 			return donuts[objectIndex - platforms.Length - scenes.Length - obstacles.Length];
-		} else if (objectIndex < platforms.Length + scenes.Length + obstacles.Length + donuts.Length + powerUps.Length) {
-			return powerUps[objectIndex - platforms.Length - scenes.Length - obstacles.Length - donuts.Length];
+		} else if (objectIndex < platforms.Length + scenes.Length + obstacles.Length + donuts.Length + fuels.Length) {
+			return fuels[objectIndex - platforms.Length - scenes.Length - obstacles.Length - donuts.Length];
+		} else if (objectIndex < platforms.Length + scenes.Length + obstacles.Length + donuts.Length + fuels.Length + powerUps.Length) {
+			return powerUps[objectIndex - platforms.Length - scenes.Length - obstacles.Length - donuts.Length - fuels.Length];
 		}
 		return null;
 	}

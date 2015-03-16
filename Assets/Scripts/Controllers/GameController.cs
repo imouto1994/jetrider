@@ -48,6 +48,11 @@ public class GameController : MonoBehaviour
 			OnStartGame();
 		}
 	}
+
+	public void ObstacleCollision()
+	{
+		GameOver();
+	}
 	
 	public bool IsGameActive()
 	{
@@ -55,6 +60,6 @@ public class GameController : MonoBehaviour
 	}
 
 	public void GameOver() {
-
+		print ("GAME OVER!!!!!");
 	}
 }
