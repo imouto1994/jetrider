@@ -34,7 +34,6 @@ public class ObstacleObject : CollidableObject {
 	
 	public void OnTriggerEnter(Collider other)
 	{	
-		print("CC");
 		if (other.gameObject.layer == playerLayer) {
 			bool collide = true;
 			if (canRunOnTop) {

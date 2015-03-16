@@ -30,7 +30,8 @@ public class PlayerController : MonoBehaviour
 	public float turnGracePeriod = 0.5f; // if restrictTurns is on, if the player swipes within the grace period before a turn then the character will turn
 	public float simultaneousTurnPreventionTime = 2; // the amount of time that must elapse in between two different turns
 	public Vector3 pivotOffset; // Assume the meshes pivot point is at the bottom. If it isn't use this offset.
-	
+	public Vector3 colliderCenterOffset;
+
 	private float totalMoveDistance;
 	private SlotPosition currentSlotPosition;
 	private Quaternion targetRotation;
@@ -152,7 +153,7 @@ public class PlayerController : MonoBehaviour
 		float hitDistance = 0;
 		RaycastHit hit;
 		// cast a ray to see if we are over any platforms
-		if (Physics.Raycast(thisTransform.position + capsuleCollider.center, -thisTransform.up, out hit, Mathf.Infinity, platformLayer)) {
+		if (Physics.Raycast(thisTransform.position + colliderCenterOffset, -thisTransform.up, out hit, Mathf.Infinity, platformLayer)) {
 			hitDistance = hit.distance;
 			PlatformObject platform = null;
 			// compare the hash code to prevent having to look up GetComponent every frame
@@ -176,7 +177,7 @@ public class PlayerController : MonoBehaviour
 				// a hit distance of -1 means that the platform is within distance
 				hitDistance = -1;
 			}
-		} else if (Physics.Raycast(thisTransform.position + capsuleCollider.center, -thisTransform.up, out hit, Mathf.Infinity, floorLayer)) {
+		} else if (Physics.Raycast(thisTransform.position + colliderCenterOffset, -thisTransform.up, out hit, Mathf.Infinity, floorLayer)) {
 			hitDistance = hit.distance;
 		}
 		
@@ -257,7 +258,7 @@ public class PlayerController : MonoBehaviour
 		
 		RaycastHit hit;
 		// ensure we are over the correct platform
-		if (Physics.Raycast(thisTransform.position + capsuleCollider.center, -thisTransform.up, out hit, Mathf.Infinity, platformLayer)) {
+		if (Physics.Raycast(thisTransform.position + colliderCenterOffset, -thisTransform.up, out hit, Mathf.Infinity, platformLayer)) {
 			PlatformObject platform = null;
 			bool hasPlatform = (platform = hit.transform.GetComponent<PlatformObject>()) != null 
 							|| (platform = hit.transform.parent.GetComponent<PlatformObject>()) != null;

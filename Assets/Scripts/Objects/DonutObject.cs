@@ -25,7 +25,6 @@ public class DonutObject : CollidableObject
 	
 	public void OnTriggerEnter(Collider other)
 	{	
-		print("WTF");
 		if (other.gameObject.layer == playerLayer) {
 			CollectCoin();
 		}
