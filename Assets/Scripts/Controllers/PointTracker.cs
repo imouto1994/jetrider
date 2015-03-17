@@ -10,6 +10,8 @@ public class PointTracker : MonoBehaviour
 	public int ticksPerSecond  = 1;
 	public float pointsPerTick = 2;
 
+	bool isActive = true;
+
 	private float points;
 	//private const string POINTS_TEXT = "Points: ";
 
@@ -32,18 +34,28 @@ public class PointTracker : MonoBehaviour
 	}
 
 	public void AutoIncreasePointsPerTick() {
-		points += pointsPerTick;
-		UpdateText();
+		if (isActive) {
+			points += pointsPerTick;
+			UpdateText();
+		}
 	}
 
 	public void IncreasePoints(float pointsAwarded) {
-		Debug.Log ("Player picked up donut");
-		points += pointsAwarded;
-		UpdateText();
+		if (isActive) {
+			Debug.Log ("Player picked up donut");
+			points += pointsAwarded;
+			UpdateText();
+		}
 	}
 
 	public void IncreaseStep(float step = 1.0f) {
-		pointsPerTick += step;
-		Debug.Log ("Increase Step, points per tick = " + pointsPerTick);
+		if (isActive) {
+			pointsPerTick += step;
+			Debug.Log ("Increase Step, points per tick = " + pointsPerTick);
+		}
+	}
+
+	public void GameOver() {
+		isActive = false;
 	}
 }

@@ -44,7 +44,7 @@ public class ObstacleObject : CollidableObject {
 			}
 			
 			if (collide) {
-				GameController.instance.ObstacleCollision();
+				GameController.instance.ObstacleCollision(this);
 			}
 		}
 	}

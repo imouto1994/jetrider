@@ -49,8 +49,9 @@ public class GameController : MonoBehaviour
 		}
 	}
 
-	public void ObstacleCollision()
+	public void ObstacleCollision(ObstacleObject obstacle)
 	{
+		obstacle.Deactivate();
 		GameOver();
 	}
 	
@@ -60,6 +61,9 @@ public class GameController : MonoBehaviour
 	}
 
 	public void GameOver() {
+		CameraController.instance.GameOver();
+		PointTracker.instance.GameOver();
 		print ("GAME OVER!!!!!");
+		Destroy (character);
 	}
 }
