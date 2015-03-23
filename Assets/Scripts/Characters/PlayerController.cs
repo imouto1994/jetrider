@@ -43,6 +43,10 @@ public class PlayerController : MonoBehaviour
 	private float maxForwardSpeed;
 	private float forwardSpeedDelta;
 
+	private bool isFlying;
+	private bool isFlyingPending;
+	private float flySpeed;
+
 	private bool isStumbling;
 	private float turnRequestTime;
 	private bool turnRightRequest;
@@ -110,6 +114,9 @@ public class PlayerController : MonoBehaviour
 		// determine the fastest and the slowest forward speeds
 		forwardSpeeds.GetMinMaxValue(out minForwardSpeed, out maxForwardSpeed);
 		forwardSpeedDelta = maxForwardSpeed - minForwardSpeed;
+		if (forwardSpeedDelta == 0) {
+			playerAnimation.SetRunSpeed(1, 1);
+		}
 		
 		ResetValues();
 		enabled = false;
@@ -118,10 +125,15 @@ public class PlayerController : MonoBehaviour
 	// Reset values
 	public void ResetValues()
 	{
+		isFlying = false;
+		isFlyingPending = false;
+		flySpeed = 0;
+
 		isStumbling = false;
 		onGround = true;
 		prevHitHashCode = -1;
 		canUpdatePosition = true;
+		playerAnimation.ResetValues();
 		turnTime = -simultaneousTurnPreventionTime;
 		
 		platformObject = null;
@@ -142,6 +154,7 @@ public class PlayerController : MonoBehaviour
 	// Start game handler
 	public void StartGame()
 	{
+		playerAnimation.Run();
 		enabled = true;
 		GameController.instance.OnPauseGame += GamePaused;
 	}
@@ -170,9 +183,21 @@ public class PlayerController : MonoBehaviour
 			// we are over a platform, determine if we are on the ground of that platform
 			if (hit.distance <= capsuleCollider.height / 2 + 0.0001f + pivotOffset.y) {
 				onGround = true;
-				Vector3 position = thisTransform.position;
-				position.y = hit.point.y;
-				thisTransform.position = position + pivotOffset;
+				if (isFlying) {
+					if (isFlyingPending) {
+						moveDirection.y += flySpeed;
+						flySpeed += gravity * Time.deltaTime;
+						onGround = false;
+					} else {
+						isFlying = false;
+						if (GameController.instance.IsGameActive())
+							playerAnimation.Run();
+					}
+				} else {
+					Vector3 position = thisTransform.position;
+					position.y = hit.point.y;
+					thisTransform.position = position + pivotOffset;
+				}
 				skipFrame = true;
 				// a hit distance of -1 means that the platform is within distance
 				hitDistance = -1;
@@ -183,7 +208,15 @@ public class PlayerController : MonoBehaviour
 		
 		if (hitDistance != -1) {
 			// a platform is beneith us but it is far away. If we are jumping apply the jump speed and gravity
-			if (!skipFrame) {
+			if (isFlying) {
+				moveDirection.y += flySpeed;
+				flySpeed += gravity * Time.deltaTime;
+				
+				// the jump is no longer pending if we are in the air
+				if (isFlyingPending) {
+					isFlyingPending = false;
+				}
+			} else if (!skipFrame) {
 				// apply gravity if we are not jumping
 				moveDirection.y = gravity;
 			}
@@ -293,7 +326,11 @@ public class PlayerController : MonoBehaviour
 	// Make character fly
 	public void Fly() 
 	{
-
+		if (true) {
+			flySpeed = 5.0f;
+			isFlying = isFlyingPending = true;
+			playerAnimation.Hover();
+		}
 	}
 	
 	// There are three slots on a track. Move left or right if there is a slot available
@@ -354,6 +391,7 @@ public class PlayerController : MonoBehaviour
 	
 	public void GameOver()
 	{
+		playerAnimation.GameOver();
 		GameController.instance.OnPauseGame -= GamePaused;
 		enabled = InAir();
 	}
