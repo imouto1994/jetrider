@@ -20,15 +20,18 @@ public class FuelTracker : MonoBehaviour
 	// Use this for initialization
 	public void Start() 
 	{
-		fuel = 0.0f;
 		maxFuel = 100.0f;
+		fuel = maxFuel;
 		minFuel = 0.0f;
 		UpdateFuelBar();
 	}
 
+	public float getFuel() {
+		return fuel;
+	}
+
 	public void IncreaseFuel(float fuelGain) 
 	{
-		Debug.Log ("Player picked up fuel");
 		fuel += fuelGain;
 
 		if (fuel > maxFuel) {
@@ -39,7 +42,6 @@ public class FuelTracker : MonoBehaviour
 
 	public void DecreaseFuel(float fuelDrain) 
 	{
-		Debug.Log ("Draining fuel");
 		fuel -= fuelDrain;
 
 		if (fuel < minFuel) {

@@ -42,7 +42,6 @@ public class PointTracker : MonoBehaviour
 
 	public void IncreasePoints(float pointsAwarded) {
 		if (isActive) {
-			Debug.Log ("Player picked up donut");
 			points += pointsAwarded;
 			UpdateText();
 		}
@@ -51,7 +50,6 @@ public class PointTracker : MonoBehaviour
 	public void IncreaseStep(float step = 1.0f) {
 		if (isActive) {
 			pointsPerTick += step;
-			Debug.Log ("Increase Step, points per tick = " + pointsPerTick);
 		}
 	}
 

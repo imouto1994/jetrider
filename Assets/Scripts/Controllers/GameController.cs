@@ -63,7 +63,6 @@ public class GameController : MonoBehaviour
 	public void GameOver() {
 		CameraController.instance.GameOver();
 		PointTracker.instance.GameOver();
-		print ("GAME OVER!!!!!");
 		Destroy (character);
 	}
 }

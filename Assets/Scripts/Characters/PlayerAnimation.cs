@@ -36,7 +36,12 @@ public class PlayerAnimation : MonoBehaviour {
 	
 	public void Update()
 	{
-
+		int stateHash = thisAnimator.GetNextAnimatorStateInfo(0).fullPathHash;
+		if (stateHash == hoverHash) {
+			thisAnimator.SetBool(hoverAnimationName, false);
+		} else if (stateHash == dieHash) {
+			thisAnimator.SetBool(dieAnimationName, false);
+		} 
 	}
 	
 	public void SetRunSpeed(float speed, float t)
@@ -45,16 +50,17 @@ public class PlayerAnimation : MonoBehaviour {
 	}
 
 	public void Run()
-	{
+	{	
+		thisAnimator.SetBool(hoverAnimationName, false);
 		thisAnimator.SetBool(runAnimationName, true);
 	}
 
 	public void Hover()
-	{
+	{	
+		thisAnimator.SetBool(runAnimationName, false);
 		thisAnimator.SetBool(hoverAnimationName, true);
 	}
 
-	
 	public void GameOver()
 	{
 		thisAnimator.SetBool(dieAnimationName, true);
