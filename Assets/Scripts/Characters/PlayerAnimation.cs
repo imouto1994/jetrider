@@ -63,6 +63,7 @@ public class PlayerAnimation : MonoBehaviour {
 
 	public void GameOver()
 	{
+		thisAnimator.SetBool(runAnimationName, false);
 		thisAnimator.SetBool(dieAnimationName, true);
 	}
 	
