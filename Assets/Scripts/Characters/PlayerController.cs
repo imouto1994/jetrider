@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
 	public float simultaneousTurnPreventionTime = 2; // the amount of time that must elapse in between two different turns
 	public Vector3 pivotOffset; // Assume the meshes pivot point is at the bottom. If it isn't use this offset.
 	public Vector3 colliderCenterOffset;
+	public float heightLimit = 6.0f;
 
 	private float totalMoveDistance;
 	private SlotPosition currentSlotPosition;
@@ -179,9 +180,8 @@ public class PlayerController : MonoBehaviour
 					platformObject = platform;
 				}
 			}
-			
 			// we are over a platform, determine if we are on the ground of that platform
-			if (hit.distance <= capsuleCollider.height / 2 + 0.0001f + pivotOffset.y) {
+			if (hit.distance <= capsuleCollider.height * 2.0 + pivotOffset.y + 0.5f) {
 				onGround = true;
 				if (isFlying) {
 					if (isFlyingPending) {
@@ -190,8 +190,9 @@ public class PlayerController : MonoBehaviour
 						onGround = false;
 					} else {
 						isFlying = false;
-						if (GameController.instance.IsGameActive())
+						if (GameController.instance.IsGameActive()) {
 							playerAnimation.Run();
+						}
 					}
 				} else {
 					Vector3 position = thisTransform.position;
@@ -206,7 +207,7 @@ public class PlayerController : MonoBehaviour
 			hitDistance = hit.distance;
 		}
 		
-		if (hitDistance != -1) {
+		if (hitDistance != -1 && isFlying) {
 			// a platform is beneith us but it is far away. If we are jumping apply the jump speed and gravity
 			if (isFlying) {
 				moveDirection.y += flySpeed;
@@ -237,6 +238,9 @@ public class PlayerController : MonoBehaviour
 		float zStrafe = (targetPosition.z - thisTransform.position.z) * Mathf.Abs(Mathf.Sin(targetRotation.eulerAngles.y * Mathf.Deg2Rad)) / Time.deltaTime;
 		moveDirection.x += Mathf.Clamp(xStrafe, -horizontalSpeed, horizontalSpeed);
 		moveDirection.z += Mathf.Clamp(zStrafe, -horizontalSpeed, horizontalSpeed);
+		if (thisTransform.position.y + moveDirection.y * Time.deltaTime > this.heightLimit) {
+			moveDirection.y = 0;
+		}
 		thisTransform.position += moveDirection * Time.deltaTime;
 		
 		// Make sure we don't run into a wall
@@ -326,10 +330,11 @@ public class PlayerController : MonoBehaviour
 	// Make character fly
 	public void Fly() 
 	{
-		if (true) {
+		if (FuelTracker.instance.getFuel() > 0.0f) {
 			flySpeed = 5.0f;
 			isFlying = isFlyingPending = true;
 			playerAnimation.Hover();
+			FuelTracker.instance.DecreaseFuel(0.25f);
 		}
 	}
 	
