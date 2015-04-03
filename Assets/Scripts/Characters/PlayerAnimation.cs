@@ -51,18 +51,22 @@ public class PlayerAnimation : MonoBehaviour {
 
 	public void Run()
 	{	
+		thisAnimator.SetBool(dieAnimationName, false);
 		thisAnimator.SetBool(hoverAnimationName, false);
 		thisAnimator.SetBool(runAnimationName, true);
 	}
 
 	public void Hover()
 	{	
+		thisAnimator.SetBool(dieAnimationName, false);
 		thisAnimator.SetBool(runAnimationName, false);
 		thisAnimator.SetBool(hoverAnimationName, true);
 	}
 
 	public void GameOver()
 	{
+		thisAnimator.SetBool(hoverAnimationName, false);
+		thisAnimator.SetBool(runAnimationName, false);
 		thisAnimator.SetBool(dieAnimationName, true);
 	}
 	

@@ -61,8 +61,11 @@ public class GameController : MonoBehaviour
 	}
 
 	public void GameOver() {
+		if(PlayerController.instance.enabled) {
+			PlayerController.instance.GameOver();
+		}
+		InputController.instance.GameOver();
 		CameraController.instance.GameOver();
 		PointTracker.instance.GameOver();
-		Destroy (character);
 	}
 }
