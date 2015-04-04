@@ -5,7 +5,8 @@ using System.Collections;
 public class GameController : MonoBehaviour
 {
 	static public GameController instance;
-	
+	public GameObject gameOverScreen;
+
 	public delegate void GenericHandler();
 	public event GenericHandler OnStartGame;
 	public delegate void PauseHandler(bool paused);
@@ -67,5 +68,10 @@ public class GameController : MonoBehaviour
 		InputController.instance.GameOver();
 		CameraController.instance.GameOver();
 		PointTracker.instance.GameOver();
+		DisplayGameOverScreen();
+	}
+
+	public void DisplayGameOverScreen() {
+		gameOverScreen.SetActive(true);
 	}
 }
