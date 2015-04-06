@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
 	public Vector3 colliderCenterOffset;
 	public float heightLimit = 6.0f;
 
+	public ParticleSystem groundRunningParticle;
+
 	private float totalMoveDistance;
 	private SlotPosition currentSlotPosition;
 	private Quaternion targetRotation;
@@ -49,8 +51,6 @@ public class PlayerController : MonoBehaviour
 	private float flySpeed;
 
 	private bool isStumbling;
-	private float turnRequestTime;
-	private bool turnRightRequest;
 	private float turnTime;
 	private bool onGround;
 	private bool skipFrame;
@@ -59,7 +59,6 @@ public class PlayerController : MonoBehaviour
 	private int platformLayer;
 	private int floorLayer;
 	private int wallLayer;
-	private int obstacleLayer;
 	
 	private Vector3 startPosition;
 	private Quaternion startRotation;
@@ -101,7 +100,6 @@ public class PlayerController : MonoBehaviour
 		platformLayer = 1 << LayerMask.NameToLayer("Platform");
 		floorLayer = 1 << LayerMask.NameToLayer("Floor");
 		wallLayer = LayerMask.NameToLayer("Wall");
-		obstacleLayer = LayerMask.NameToLayer("Obstacle");
 		
 		thisTransform = transform;
 		capsuleCollider = GetComponent<CapsuleCollider>();
@@ -183,6 +181,7 @@ public class PlayerController : MonoBehaviour
 			// we are over a platform, determine if we are on the ground of that platform
 			if (hit.distance <= capsuleCollider.height * 2.0 + pivotOffset.y + 0.5f) {
 				onGround = true;
+				groundRunningParticle.Play();
 				if (isFlying) {
 					if (isFlyingPending) {
 						moveDirection.y += flySpeed;
@@ -308,8 +307,6 @@ public class PlayerController : MonoBehaviour
 		
 		// if we are restricting a turn, don't turn unless we are above a turn platform
 		if (restrictTurns && (!isAboveTurn || restrictTurnsToTurnTrigger)) {
-			turnRequestTime = Time.time;
-			turnRightRequest = rightTurn;
 			return false;
 		} 
 		
