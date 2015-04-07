@@ -53,7 +53,6 @@ public class GameController : MonoBehaviour
 
 	public void ObstacleCollision(ObstacleObject obstacle)
 	{
-		obstacle.Deactivate();
 		GameOver();
 	}
 	
