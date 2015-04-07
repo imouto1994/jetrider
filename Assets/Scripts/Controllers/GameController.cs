@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 // SINGLETON CLASS FOR GAME CONTROLLER
 public class GameController : MonoBehaviour
@@ -52,7 +53,6 @@ public class GameController : MonoBehaviour
 
 	public void ObstacleCollision(ObstacleObject obstacle)
 	{
-		obstacle.Deactivate();
 		GameOver();
 	}
 	
@@ -73,5 +73,8 @@ public class GameController : MonoBehaviour
 
 	public void DisplayGameOverScreen() {
 		gameOverScreen.SetActive(true);
+		Text score = gameOverScreen.transform.Find ("Score").GetComponentInChildren<Text>();
+		Debug.Log (PointTracker.instance.GetScore());
+		score.text = "Your score: " + PointTracker.instance.GetScore();
 	}
 }

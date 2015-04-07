@@ -56,4 +56,8 @@ public class PointTracker : MonoBehaviour
 	public void GameOver() {
 		isActive = false;
 	}
+
+	public string GetScore() {
+		return pointsText.text;
+	}
 }
