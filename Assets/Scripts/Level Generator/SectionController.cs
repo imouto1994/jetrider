@@ -13,15 +13,11 @@ public class SectionController : MonoBehaviour
 	// If true, you must provide transitions from one section to another for every combination of sections for both platforms and scenes
 	public bool useSectionTransitions;
 	
-	// the start section, used by the probability type
-	public int startSection;
-	
-	// the end section (inclusive), used by the probability type
-	public int endSection;
-	
 	// the list of probabilities or sections, depending on the type
 	public InterpolatedValueList sectionList;
 
+	private InterpolatedValueList platformSectionList;
+	private InterpolatedValueList sceneSectionList;
 	private int activePlatformSection;
 	private int activeSceneSection;
 
@@ -33,7 +29,13 @@ public class SectionController : MonoBehaviour
 	// Initialize function
 	public void Start()
 	{
-		sectionList.Init();
+		platformSectionList = new InterpolatedValueList(sectionList.hasLoop, sectionList.loopBackToIndex);
+		platformSectionList.values = sectionList.values;
+		platformSectionList.Init();
+		
+		sceneSectionList = new InterpolatedValueList(sectionList.hasLoop, sectionList.loopBackToIndex);
+		sceneSectionList.values = sectionList.values;
+		sceneSectionList.Init();
 	}
 	
 	// Returns the section based off of the distance.
@@ -41,12 +43,10 @@ public class SectionController : MonoBehaviour
 	{
 		int activeSection = (isSceneObject ? activeSceneSection : activePlatformSection);
 
-		if (isSceneObject) { // scene objects need to have the same section as the platform below it
-			activeSection = ObjectHistory.instance.GetFirstPlatformSection();
+		if (isSceneObject) {
+			activeSection = (int)sceneSectionList.GetValue(distance);
 		} else {
-			if (Random.value < sectionList.GetValue(distance)) {
-				activeSection = Random.Range(startSection, endSection + 1);
-			}
+			activeSection = (int)platformSectionList.GetValue(distance);
 		}
 		
 		if (isSceneObject) {
