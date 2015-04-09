@@ -239,6 +239,7 @@ public class PlayerController : MonoBehaviour
 		moveDirection.z += Mathf.Clamp(zStrafe, -horizontalSpeed, horizontalSpeed);
 		if (thisTransform.position.y + moveDirection.y * Time.deltaTime > this.heightLimit) {
 			moveDirection.y = 0;
+			flySpeed = 0;
 		}
 		thisTransform.position += moveDirection * Time.deltaTime;
 		
