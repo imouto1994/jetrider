@@ -74,7 +74,6 @@ public class GameController : MonoBehaviour
 	public void DisplayGameOverScreen() {
 		gameOverScreen.SetActive(true);
 		Text score = gameOverScreen.transform.Find ("Score").GetComponentInChildren<Text>();
-		Debug.Log (PointTracker.instance.GetScore());
 		score.text = "Your score: " + PointTracker.instance.GetScore();
 	}
 }
