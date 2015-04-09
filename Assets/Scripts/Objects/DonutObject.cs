@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(SpawnProbs))]
 [RequireComponent(typeof(CollidableSpawnRules))]
@@ -10,6 +11,7 @@ public class DonutObject : CollidableObject
 	//modify in Unity editor
 	public int pointsPerDonut = 100;
 	private int playerLayer;
+	public Text donutText;
 
 	public override void Init()
 	{
@@ -33,6 +35,12 @@ public class DonutObject : CollidableObject
 	public void CollectCoin()
 	{
 		PointTracker.instance.IncreasePoints(pointsPerDonut);
+		GameObject dCanvas = GameObject.FindGameObjectWithTag("DonutCanvas");
+		Text displayText = Instantiate(donutText, Vector3.zero, Quaternion.identity) as Text;
+
+		displayText.transform.SetParent( dCanvas.transform, false );
+		displayText.transform.position = new Vector2(displayText.transform.position.x, Screen.height - 150);
+		displayText.text = "+" + pointsPerDonut;
 		Deactivate();
 	}
 }
