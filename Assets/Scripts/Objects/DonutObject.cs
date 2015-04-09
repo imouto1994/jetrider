@@ -31,16 +31,22 @@ public class DonutObject : CollidableObject
 			CollectCoin();
 		}
 	}
-	
+
 	public void CollectCoin()
 	{
 		PointTracker.instance.IncreasePoints(pointsPerDonut);
-		GameObject dCanvas = GameObject.FindGameObjectWithTag("DonutCanvas");
-		Text displayText = Instantiate(donutText, Vector3.zero, Quaternion.identity) as Text;
-
-		displayText.transform.SetParent( dCanvas.transform, false );
-		displayText.transform.position = new Vector2(displayText.transform.position.x, Screen.height - 150);
-		displayText.text = "+" + pointsPerDonut;
+		DisplayPointsAwardedInGUI ();
 		Deactivate();
+	}
+
+	void DisplayPointsAwardedInGUI ()
+	{	
+		if (donutText != null) {
+			GameObject dCanvas = GameObject.FindGameObjectWithTag ("DonutCanvas");
+			Text displayText = Instantiate (donutText, Vector3.zero, Quaternion.identity) as Text;
+			displayText.transform.SetParent (dCanvas.transform, false);
+			displayText.transform.position = new Vector2 (displayText.transform.position.x, Screen.height - 150);
+			displayText.text = "+" + pointsPerDonut;
+		}
 	}
 }

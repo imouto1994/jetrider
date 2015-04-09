@@ -10,7 +10,7 @@ public class FloatUp : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		gameObject.transform.position += (Vector3.up);
+		gameObject.transform.position += (Vector3.up * 2F);
 	}
 
 	void Destroy() {
