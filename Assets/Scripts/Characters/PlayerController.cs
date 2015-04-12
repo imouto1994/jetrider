@@ -331,9 +331,12 @@ public class PlayerController : MonoBehaviour
 	{
 		if (FuelTracker.instance.getFuel() > 0.0f) {
 			if(isFlying){
+				if (flySpeed < 2.0f) {
+					flySpeed = 2.0f;
+				}
 				flySpeed += jetAcceleration * Time.deltaTime;
 			}else{
-				flySpeed = 1.0f;
+				flySpeed = 2.0f;
 				isFlying = isFlyingPending = true;
 				playerAnimation.Hover();
 			}

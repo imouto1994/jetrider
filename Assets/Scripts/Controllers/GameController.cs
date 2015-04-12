@@ -63,6 +63,7 @@ public class GameController : MonoBehaviour
 	}
 
 	public void GameOver() {
+		gameActive = false;
 		if(PlayerController.instance.enabled) {
 			PlayerController.instance.GameOver();
 		}
