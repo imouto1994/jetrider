@@ -2,54 +2,58 @@
 using System.Collections;
 using Leap;
 
-public class LeapMotionController : MonoBehaviour {
+public class LeapMotionController : MonoBehaviour
+{
 
 	enum Dir {left, right, none};
 
 	static public LeapMotionController instance;
-
 	[SerializeField]
-	private float swipeMinLength;
+	private float
+		swipeMinLength;
 	[SerializeField]
-	private float swipeMinVelocity;
-	
+	private float
+		swipeMinVelocity;
 	private Controller controller;
 	private int prevGestureId;
 	private bool isMovingLeft, isMovingRight;
 	private Dir prevDirection;
 
-	public void Awake()
+	public void Awake ()
 	{
 		instance = this;
 	}
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 		controller = new Controller ();
-		controller.EnableGesture(Gesture.GestureType.TYPE_SWIPE);
-		controller.Config.SetFloat("Gesture.Swipe.MinLength", swipeMinLength);
-		controller.Config.SetFloat("Gesture.Swipe.MinVelocity", swipeMinVelocity);
-		controller.Config.Save();
+		controller.EnableGesture (Gesture.GestureType.TYPE_SWIPE);
+		controller.Config.SetFloat ("Gesture.Swipe.MinLength", swipeMinLength);
+		controller.Config.SetFloat ("Gesture.Swipe.MinVelocity", swipeMinVelocity);
+		controller.Config.Save ();
 	}
 
-	public void StartGame() {
+	public void StartGame ()
+	{
 		enabled = true;
 	}
 	
-	public void GameOver() {
+	public void GameOver ()
+	{
 		enabled = false;
 	}
 
-
-	void Update () {
+	void Update ()
+	{
 		Frame frame = controller.Frame ();
 		HandList hands = frame.Hands;
 		Hand hand;
 		if (!hands.IsEmpty) {
-			hand = hands[0];
+			hand = hands [0];
 			float pitch = hand.Direction.Pitch;
-			if(pitch>0.35){
-				PlayerController.instance.Fly();
+			if (pitch > 0.35) {
+				PlayerController.instance.Fly ();
 			}
 		}
 		Dir currDirection;
@@ -68,16 +72,16 @@ public class LeapMotionController : MonoBehaviour {
 					}
 				}
 			}
-			if(isMovingLeft){
-				if(isMovingRight){
+			if (isMovingLeft) {
+				if (isMovingRight) {
 					currDirection = Dir.none;
-				}else{
+				} else {
 					currDirection = Dir.left;
 				}
-			}else {
-				if(isMovingRight){
+			} else {
+				if (isMovingRight) {
 					currDirection = Dir.right;
-				}else{
+				} else {
 					currDirection = Dir.none;
 				}
 			}
@@ -90,45 +94,57 @@ public class LeapMotionController : MonoBehaviour {
 		switch (prevDirection) {
 			
 		case Dir.left:
-			if(currDirection==Dir.none){
+			if (currDirection == Dir.none) {
 				prevDirection = Dir.none;
-			}else if(currDirection==Dir.right){
+			} else if (currDirection == Dir.right) {
 				prevDirection = Dir.right;
-				//move right
-				print ("right");
+				goRight ();
 			}
 			break;
 			
 		case Dir.none:
-			if(currDirection==Dir.left){
+			if (currDirection == Dir.left) {
 				prevDirection = Dir.left;
-				//move left
-				print ("left");
-			}else if(currDirection==Dir.right){
+				goLeft ();
+			} else if (currDirection == Dir.right) {
 				prevDirection = Dir.right;
-				//move right
-				print ("right");
+				goRight ();
 			}
 			break;
 			
 		case Dir.right:
-			if(currDirection==Dir.none){
+			if (currDirection == Dir.none) {
 				prevDirection = Dir.none;
-			}else if(currDirection==Dir.left){
+			} else if (currDirection == Dir.left) {
 				prevDirection = Dir.left;
-				//move left
-				print ("left");
+				goLeft ();
 			}
 			break;
 		}
 	}
-	
-	bool isLeftSwipe(SwipeGesture swipe){
+
+	void goRight ()
+	{
+		if (!PlayerController.instance.Turn (true)) {
+			PlayerController.instance.ChangeSlots (true);
+		}
+	}
+
+	void goLeft ()
+	{
+		if (!PlayerController.instance.Turn (false)) {
+			PlayerController.instance.ChangeSlots (false);
+		}
+	}
+
+	bool isLeftSwipe (SwipeGesture swipe)
+	{
 		Vector swipeDirection = swipe.Direction;
 		return swipeDirection.x < -0.3f;
 	}
 	
-	bool isRightSwipe(SwipeGesture swipe){
+	bool isRightSwipe (SwipeGesture swipe)
+	{
 		Vector swipeDirection = swipe.Direction;
 		return swipeDirection.x > 0.3f;
 	}
