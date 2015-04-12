@@ -45,6 +45,7 @@ public class GameController : MonoBehaviour
 		gameActive = true;
 		InputController.instance.StartGame();
 		CameraController.instance.StartGame(fromRestart);
+		AudioController.instance.PlayBackgroundMusic(true);
 		PlayerController.instance.StartGame();
 		if (OnStartGame != null) {
 			OnStartGame();
@@ -65,6 +66,7 @@ public class GameController : MonoBehaviour
 		if(PlayerController.instance.enabled) {
 			PlayerController.instance.GameOver();
 		}
+		AudioController.instance.PlayBackgroundMusic(false);
 		InputController.instance.GameOver();
 		CameraController.instance.GameOver();
 		PointTracker.instance.GameOver();
