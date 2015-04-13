@@ -24,8 +24,9 @@ public class PlayerController : MonoBehaviour
 	public float fastRotationSpeed = 20;
 	public float stumbleSpeedDecrement = 3; // amount to decrease the speed when the player hits an obstacle
 	public float stumbleDuration = 1;
-	public float gravity = -15;
-	public float jetAcceleration = 40;
+	public float gravity;
+	public float jetAcceleration;
+	public float jumpSpeed;
 	public bool restrictTurns = true; // if true, can only turn on turn platforms
 	public bool restrictTurnsToTurnTrigger = false; // if true, the player will only turn when the player hits a turn trigger. restrictTurns must also be enabled
 	public float turnGracePeriod = 0.5f; // if restrictTurns is on, if the player swipes within the grace period before a turn then the character will turn
@@ -332,12 +333,9 @@ public class PlayerController : MonoBehaviour
 	{
 		if (FuelTracker.instance.getFuel() > 0.0f) {
 			if(isFlying){
-				if (flySpeed < 2.0f) {
-					flySpeed = 2.0f;
-				}
 				flySpeed += jetAcceleration * Time.deltaTime;
 			}else{
-				flySpeed = 2.0f;
+				flySpeed = jumpSpeed;
 				isFlying = isFlyingPending = true;
 				playerAnimation.Hover();
 			}
