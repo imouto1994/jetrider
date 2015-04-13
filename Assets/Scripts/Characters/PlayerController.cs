@@ -339,7 +339,7 @@ public class PlayerController : MonoBehaviour
 				isFlying = isFlyingPending = true;
 				playerAnimation.Hover();
 			}
-			FuelTracker.instance.DecreaseFuel(0.25f);
+			FuelTracker.instance.DecreaseFuel(0.1f);
 		}
 	}
 	
