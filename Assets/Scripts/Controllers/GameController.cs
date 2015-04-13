@@ -91,10 +91,10 @@ public class GameController : MonoBehaviour
 	}
 
 	public void TogglePause() {
+		gamePaused = !gamePaused;
 		OnPauseGame(gamePaused);
 		Time.timeScale = gamePaused ? 0 : 1; 
 		menuScreen.SetActive (gamePaused);
-		gamePaused = !gamePaused;
 	}
 
 	public void ForceResume() {
