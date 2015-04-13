@@ -8,12 +8,14 @@ public class LeapMotionController : MonoBehaviour
 	enum Dir {left, right, none};
 
 	static public LeapMotionController instance;
+
 	[SerializeField]
-	private float
-		swipeMinLength;
+	private float swipeMinLength;
 	[SerializeField]
-	private float
-		swipeMinVelocity;
+	private float swipeMinVelocity;
+	[SerializeField]
+	private float swipeMaxAngle; // in degrees
+
 	private Controller controller;
 	private int prevGestureId;
 	private bool isMovingLeft, isMovingRight;
@@ -140,12 +142,12 @@ public class LeapMotionController : MonoBehaviour
 	bool isLeftSwipe (SwipeGesture swipe)
 	{
 		Vector swipeDirection = swipe.Direction;
-		return swipeDirection.x < -0.3f;
+		return swipeDirection.x < -Mathf.Cos(swipeMaxAngle * Mathf.Deg2Rad);
 	}
 	
 	bool isRightSwipe (SwipeGesture swipe)
 	{
 		Vector swipeDirection = swipe.Direction;
-		return swipeDirection.x > 0.3f;
+		return swipeDirection.x > Mathf.Cos(swipeMaxAngle * Mathf.Deg2Rad);
 	}
 }
