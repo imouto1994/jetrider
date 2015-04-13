@@ -21,6 +21,10 @@ public class InputController : MonoBehaviour {
 		enabled = false;
 	}
 
+	public void ToggleActive() {
+		enabled = !enabled;
+	}
+
 	public void Update() {
 		// Turn
 		bool hasTurned = false;

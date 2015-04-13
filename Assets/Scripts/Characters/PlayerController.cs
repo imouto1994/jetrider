@@ -242,6 +242,7 @@ public class PlayerController : MonoBehaviour
 			moveDirection.y = 0;
 			flySpeed = 0;
 		}
+
 		thisTransform.position += moveDirection * Time.deltaTime;
 		
 		// Make sure we don't run into a wall

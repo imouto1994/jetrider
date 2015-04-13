@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
 {
 	static public GameController instance;
 	public GameObject gameOverScreen;
+	public GameObject menuScreen;
 
 	public delegate void GenericHandler();
 	public event GenericHandler OnStartGame;
@@ -17,7 +18,7 @@ public class GameController : MonoBehaviour
 
 	public GameObject character;
 	
-	private bool gamePaused;
+	private bool gamePaused = false;
 	private bool gameActive;
 	
 	public void Awake()
@@ -80,5 +81,26 @@ public class GameController : MonoBehaviour
 		gameOverScreen.SetActive(true);
 		Text score = gameOverScreen.transform.Find ("Score").GetComponentInChildren<Text>();
 		score.text = "Your score: " + PointTracker.instance.GetScore();
+	}
+
+	public void Update() {
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			TogglePause();
+			InputController.instance.ToggleActive();
+		}
+	}
+
+	public void TogglePause() {
+		gamePaused = !gamePaused;
+		OnPauseGame(gamePaused);
+		Time.timeScale = gamePaused ? 0 : 1; 
+		menuScreen.SetActive (gamePaused);
+	}
+
+	public void ForceResume() {
+		OnPauseGame(true);
+		Time.timeScale = 1;
+		menuScreen.SetActive(false);
+		gamePaused = false;
 	}
 }

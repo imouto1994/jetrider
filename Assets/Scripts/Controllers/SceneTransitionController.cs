@@ -15,10 +15,12 @@ public class SceneTransitionController : MonoBehaviour {
 
 	public void RestartGame() {
 		Debug.Log ("Restart game");
+		GameController.instance.ForceResume();
 		Application.LoadLevel("LevelTest");
 	}
 
 	public void ReturnToMainMenu() {
+		GameController.instance.ForceResume();
 		Debug.Log ("Return to main menu");
 		Application.LoadLevel("Welcome");
 	}
