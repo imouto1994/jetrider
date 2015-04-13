@@ -47,7 +47,7 @@ public class PointTracker : MonoBehaviour
 		}
 	}
 
-	public void IncreaseStep(float step = 1.0f) {
+	public void IncreaseStep(float step = 4.0f) {
 		if (isActive) {
 			pointsPerTick += step;
 		}

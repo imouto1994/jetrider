@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
 
 	public GameObject character;
 	
-	private bool gamePaused;
+	private bool gamePaused = false;
 	private bool gameActive;
 	
 	public void Awake()
@@ -80,5 +80,17 @@ public class GameController : MonoBehaviour
 		gameOverScreen.SetActive(true);
 		Text score = gameOverScreen.transform.Find ("Score").GetComponentInChildren<Text>();
 		score.text = "Your score: " + PointTracker.instance.GetScore();
+	}
+
+	public void Update() {
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			TogglePause();
+		}
+	}
+
+	public void TogglePause() {
+		OnPauseGame(gamePaused);
+		Time.timeScale = gamePaused ? 0 : 1; 
+		gamePaused = !gamePaused;
 	}
 }
