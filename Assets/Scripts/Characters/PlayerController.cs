@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
 	public Vector3 colliderCenterOffset;
 	public float heightLimit = 6.0f;
 
-	public ParticleSystem groundRunningParticle;
+	public ParticleSystem collisionParticleSystem;
 
 	private float totalMoveDistance;
 	private SlotPosition currentSlotPosition;
@@ -183,7 +183,6 @@ public class PlayerController : MonoBehaviour
 			// we are over a platform, determine if we are on the ground of that platform
 			if (hit.distance <= capsuleCollider.height * 2.0 + pivotOffset.y + 0.5f) {
 				onGround = true;
-				groundRunningParticle.Play();
 				if (isFlying) {
 					if (isFlyingPending) {
 						moveDirection.y += flySpeed;
@@ -397,6 +396,15 @@ public class PlayerController : MonoBehaviour
 	public bool InAir()
 	{
 		return !onGround;
+	}
+
+	public void ObstacleCollision(Transform obstacle, Vector3 position)
+	{
+		if (!enabled)
+			return;
+		
+		// Make sure the particle system is active
+		Instantiate(collisionParticleSystem, position, Quaternion.identity);
 	}
 	
 	public void GameOver()

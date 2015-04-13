@@ -54,8 +54,9 @@ public class GameController : MonoBehaviour
 		}
 	}
 
-	public void ObstacleCollision(ObstacleObject obstacle)
+	public void ObstacleCollision(ObstacleObject obstacle, Vector3 position)
 	{
+		PlayerController.instance.ObstacleCollision(obstacle.GetTransform(), position);
 		GameOver();
 	}
 	

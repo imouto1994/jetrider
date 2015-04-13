@@ -44,7 +44,7 @@ public class ObstacleObject : CollidableObject {
 			}
 			
 			if (collide) {
-				GameController.instance.ObstacleCollision(this);
+				GameController.instance.ObstacleCollision(this, other.ClosestPointOnBounds(thisTransform.position));
 			}
 		}
 	}
