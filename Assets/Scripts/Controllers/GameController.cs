@@ -87,7 +87,6 @@ public class GameController : MonoBehaviour
 	public void Update() {
 		if (Input.GetKeyDown(KeyCode.Escape)) {
 			TogglePause();
-			InputController.instance.ToggleActive();
 		}
 	}
 
@@ -96,6 +95,7 @@ public class GameController : MonoBehaviour
 		OnPauseGame(gamePaused);
 		Time.timeScale = gamePaused ? 0 : 1; 
 		menuScreen.SetActive (gamePaused);
+		InputController.instance.ToggleActive();
 	}
 
 	public void ForceResume() {
@@ -103,5 +103,6 @@ public class GameController : MonoBehaviour
 		Time.timeScale = 1;
 		menuScreen.SetActive(false);
 		gamePaused = false;
+		InputController.instance.ForceActive();
 	}
 }

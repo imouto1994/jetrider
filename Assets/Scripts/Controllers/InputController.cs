@@ -25,6 +25,10 @@ public class InputController : MonoBehaviour {
 		enabled = !enabled;
 	}
 
+	public void ForceActive() {
+		enabled = true;
+	}
+
 	public void Update() {
 		// Turn
 		bool hasTurned = false;
