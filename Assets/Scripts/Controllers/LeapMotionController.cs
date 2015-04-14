@@ -54,7 +54,7 @@ public class LeapMotionController : MonoBehaviour
 		if (!hands.IsEmpty) {
 			hand = hands [0];
 			float pitch = hand.Direction.Pitch;
-			if (pitch > 0.35) {
+			if (pitch > 0.4) {
 				PlayerController.instance.Fly ();
 			}
 		}
