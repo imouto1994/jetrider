@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 	static public GameController instance;
 	public GameObject gameOverScreen;
 	public GameObject menuScreen;
+	public GameObject instructionsScreen;
 
 	public delegate void GenericHandler();
 	public event GenericHandler OnStartGame;
@@ -20,6 +21,8 @@ public class GameController : MonoBehaviour
 	
 	private bool gamePaused = false;
 	private bool gameActive;
+
+	private string currentScreen = "";
 	
 	public void Awake()
 	{
@@ -86,7 +89,11 @@ public class GameController : MonoBehaviour
 
 	public void Update() {
 		if (Input.GetKeyDown(KeyCode.Escape)) {
-			TogglePause();
+			if (instructionsScreen.activeSelf) {
+				CloseInstructions();
+			} else {
+				TogglePause();
+			}
 		}
 	}
 
@@ -104,5 +111,13 @@ public class GameController : MonoBehaviour
 		menuScreen.SetActive(false);
 		gamePaused = false;
 		InputController.instance.ForceActive();
+	}
+
+	public void DisplayInstructions() {
+		instructionsScreen.SetActive(true);
+	}
+
+	public void CloseInstructions() {
+		instructionsScreen.SetActive(false);
 	}
 }
