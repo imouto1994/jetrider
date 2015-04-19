@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 // SINGLETON CLASS FOR GAME CONTROLLER
 public class GameController : MonoBehaviour
@@ -9,6 +10,7 @@ public class GameController : MonoBehaviour
 	public GameObject gameOverScreen;
 	public GameObject menuScreen;
 	public GameObject instructionsScreen;
+	public GameObject highScoreScreen;
 
 	public delegate void GenericHandler();
 	public event GenericHandler OnStartGame;
@@ -21,6 +23,8 @@ public class GameController : MonoBehaviour
 	
 	private bool gamePaused = false;
 	private bool gameActive;
+
+	private int highScore = 0;
 
 	private string currentScreen = "";
 	
@@ -35,6 +39,7 @@ public class GameController : MonoBehaviour
 		Application.runInBackground = runInBackground;
 		SpawnCharacter();
 		StartGame(false);
+		highScore = PlayerPrefs.GetInt ("High Score");
 	}
 
 	// Spawn character
@@ -83,8 +88,15 @@ public class GameController : MonoBehaviour
 
 	public void DisplayGameOverScreen() {
 		gameOverScreen.SetActive(true);
-		Text score = gameOverScreen.transform.Find ("Score").GetComponentInChildren<Text>();
-		score.text = "Your score: " + PointTracker.instance.GetScore();
+		Text scoreText = gameOverScreen.transform.Find ("Score").GetComponentInChildren<Text>();
+		int score = Int32.Parse(PointTracker.instance.GetScore());
+		scoreText.text = "Your score: " + score;
+
+		if (score > highScore) {
+			GameObject highScoreNotification = gameOverScreen.transform.Find("HighScore").gameObject;
+			PlayerPrefs.SetInt("High Score", score);
+			highScoreNotification.SetActive(true);
+		}
 	}
 
 	public void Update() {
@@ -119,5 +131,13 @@ public class GameController : MonoBehaviour
 
 	public void CloseInstructions() {
 		instructionsScreen.SetActive(false);
+	}
+
+	public void DisplayHighScore() {
+		highScoreScreen.SetActive(true);
+	}
+	
+	public void CloseHighScore() {
+		highScoreScreen.SetActive(false);
 	}
 }
