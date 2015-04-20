@@ -35,6 +35,7 @@ public class DonutObject : CollidableObject
 	public void CollectCoin()
 	{
 		PointTracker.instance.IncreasePoints(pointsPerDonut);
+		AudioController.instance.PlaySoundEffect(SoundEffects.CoinSoundEffect);
 		DisplayPointsAwardedInGUI ();
 		Deactivate();
 	}

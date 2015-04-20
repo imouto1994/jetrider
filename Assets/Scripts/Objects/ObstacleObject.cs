@@ -45,6 +45,7 @@ public class ObstacleObject : CollidableObject {
 			
 			if (collide) {
 				GameController.instance.ObstacleCollision(this, other.ClosestPointOnBounds(thisTransform.position));
+				AudioController.instance.PlaySoundEffect(SoundEffects.ObstacleCollisionSoundEffect);
 			}
 		}
 	}
