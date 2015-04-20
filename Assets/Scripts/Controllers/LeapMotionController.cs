@@ -15,6 +15,10 @@ public class LeapMotionController : MonoBehaviour
 	private float swipeMinVelocity;
 	[SerializeField]
 	private float swipeMaxAngle; // in degrees
+	[SerializeField]
+	private float minPitch; // in radians
+	[SerializeField]
+	private float maxPitch; // in radians
 
 	private Controller controller;
 	private int prevGestureId;
@@ -51,11 +55,13 @@ public class LeapMotionController : MonoBehaviour
 		Frame frame = controller.Frame ();
 		HandList hands = frame.Hands;
 		Hand hand;
+
+		// y-axis movement
 		if (!hands.IsEmpty) {
 			hand = hands [0];
 			float pitch = hand.Direction.Pitch;
-			if (pitch > 0.4) {
-				PlayerController.instance.Fly ();
+			if(pitch > minPitch){
+				PlayerController.instance.Fly(Mathf.InverseLerp(minPitch, maxPitch, pitch));
 			}
 		}
 		Dir currDirection;
@@ -74,6 +80,7 @@ public class LeapMotionController : MonoBehaviour
 					}
 				}
 			}
+
 			if (isMovingLeft) {
 				if (isMovingRight) {
 					currDirection = Dir.none;
