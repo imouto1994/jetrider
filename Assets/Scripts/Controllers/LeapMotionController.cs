@@ -16,9 +16,9 @@ public class LeapMotionController : MonoBehaviour
 	[SerializeField]
 	private float swipeMaxAngle; // in degrees
 	[SerializeField]
-	private float minPitch;
+	private float minPitch; // in radians
 	[SerializeField]
-	private float maxPitch;
+	private float maxPitch; // in radians
 
 	private Controller controller;
 	private int prevGestureId;
@@ -80,6 +80,7 @@ public class LeapMotionController : MonoBehaviour
 					}
 				}
 			}
+
 			if (isMovingLeft) {
 				if (isMovingRight) {
 					currDirection = Dir.none;
