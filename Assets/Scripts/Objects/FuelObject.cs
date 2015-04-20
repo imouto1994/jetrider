@@ -32,6 +32,7 @@ public class FuelObject : CollidableObject {
 	public void CollectFuel()
 	{
 		FuelTracker.instance.IncreaseFuel(fuelGain);
+		AudioController.instance.PlaySoundEffect(SoundEffects.FuelSoundEffect);
 		Deactivate();
 	}
 }
