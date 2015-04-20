@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
 	public float gravity;
 	public float jetAcceleration;
 	public float jumpSpeed;
+	public float fuelDereasingRate;
 	public bool restrictTurns = true; // if true, can only turn on turn platforms
 	public bool restrictTurnsToTurnTrigger = false; // if true, the player will only turn when the player hits a turn trigger. restrictTurns must also be enabled
 	public float turnGracePeriod = 0.5f; // if restrictTurns is on, if the player swipes within the grace period before a turn then the character will turn
@@ -330,18 +331,24 @@ public class PlayerController : MonoBehaviour
 	// Make character fly
 	public void Fly() 
 	{
+		Fly(1.0f);
+	}
+
+	public void Fly(float rate)
+	{
+		rate = Mathf.Clamp01(rate);
 		if (FuelTracker.instance.getFuel() > 0.0f) {
 			if(isFlying){
-				flySpeed += jetAcceleration * Time.deltaTime;
+				flySpeed += jetAcceleration * Time.deltaTime * rate;
 			}else{
 				flySpeed = jumpSpeed;
 				isFlying = isFlyingPending = true;
 				playerAnimation.Hover();
 			}
-			FuelTracker.instance.DecreaseFuel(0.1f);
+			FuelTracker.instance.DecreaseFuel(fuelDereasingRate * rate);
 		}
 	}
-	
+
 	// There are three slots on a track. Move left or right if there is a slot available
 	public void ChangeSlots(bool right)
 	{
