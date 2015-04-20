@@ -39,7 +39,6 @@ public class GameController : MonoBehaviour
 		Application.runInBackground = runInBackground;
 		SpawnCharacter();
 		StartGame(false);
-		highScore = PlayerPrefs.GetInt ("High Score");
 	}
 
 	// Spawn character
@@ -92,6 +91,7 @@ public class GameController : MonoBehaviour
 		int score = Int32.Parse(PointTracker.instance.GetScore());
 		scoreText.text = "Your score: " + score;
 
+		highScore = PlayerPrefs.GetInt ("High Score");
 		if (score > highScore) {
 			GameObject highScoreNotification = gameOverScreen.transform.Find("HighScore").gameObject;
 			PlayerPrefs.SetInt("High Score", score);
@@ -103,6 +103,8 @@ public class GameController : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Escape)) {
 			if (instructionsScreen.activeSelf) {
 				CloseInstructions();
+			} else if (highScoreScreen.activeSelf) {
+				CloseHighScore();
 			} else {
 				TogglePause();
 			}

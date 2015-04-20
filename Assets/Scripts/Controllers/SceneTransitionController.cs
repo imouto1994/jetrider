@@ -10,13 +10,13 @@ public class SceneTransitionController : MonoBehaviour {
 
 	public void StartGame() {
 		Debug.Log ("Play game!");
-		Application.LoadLevel("LevelTest");
+		Application.LoadLevel("Level");
 	}
 
 	public void RestartGame() {
 		Debug.Log ("Restart game");
 		GameController.instance.ForceResume();
-		Application.LoadLevel("LevelTest");
+		Application.LoadLevel("Level");
 	}
 
 	public void ReturnToMainMenu() {
