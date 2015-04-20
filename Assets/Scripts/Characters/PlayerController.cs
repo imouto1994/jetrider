@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 	public float simultaneousTurnPreventionTime = 2; // the amount of time that must elapse in between two different turns
 	public Vector3 pivotOffset; // Assume the meshes pivot point is at the bottom. If it isn't use this offset.
 	public Vector3 colliderCenterOffset;
-	public float heightLimit = 6.0f;
+	public float heightLimit = 5.0f;
 
 	public ParticleSystem collisionParticleSystem;
 
