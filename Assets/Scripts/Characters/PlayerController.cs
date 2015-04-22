@@ -246,11 +246,6 @@ public class PlayerController : MonoBehaviour
 
 		thisTransform.position += moveDirection * Time.deltaTime;
 		
-		// Make sure we don't run into a wall
-		if (Physics.Raycast(thisTransform.position + Vector3.up, thisTransform.forward, capsuleCollider.radius + 5.0f, 1 << wallLayer)) {
-			GameController.instance.GameOver();
-		}
-		
 		if (!GameController.instance.IsGameActive()) {
 			enabled = InAir(); // keep the character active for as long as they are in the air so gravity can keep pushing them down.
 		}
