@@ -109,6 +109,12 @@ public class GameController : MonoBehaviour
 				TogglePause();
 			}
 		}
+
+		if ( (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && gameOverScreen.activeSelf) {
+			SceneTransitionController transitionScript = GetComponent<SceneTransitionController>();
+			transitionScript.RestartGame();
+		}
+
 	}
 
 	public void TogglePause() {
