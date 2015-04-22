@@ -247,7 +247,7 @@ public class PlayerController : MonoBehaviour
 		thisTransform.position += moveDirection * Time.deltaTime;
 		
 		// Make sure we don't run into a wall
-		if (Physics.Raycast(thisTransform.position + Vector3.up, thisTransform.forward, capsuleCollider.radius, 1 << wallLayer)) {
+		if (Physics.Raycast(thisTransform.position + Vector3.up, thisTransform.forward, capsuleCollider.radius + 5.0f, 1 << wallLayer)) {
 			GameController.instance.GameOver();
 		}
 		
