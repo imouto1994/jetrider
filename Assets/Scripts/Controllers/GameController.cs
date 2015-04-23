@@ -100,7 +100,7 @@ public class GameController : MonoBehaviour
 	}
 
 	public void Update() {
-		if (Input.GetKeyDown(KeyCode.Escape)) {
+		if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Cancel")) {
 			if (instructionsScreen.activeSelf) {
 				CloseInstructions();
 			} else if (highScoreScreen.activeSelf) {
@@ -110,7 +110,7 @@ public class GameController : MonoBehaviour
 			}
 		}
 
-		if ( (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && gameOverScreen.activeSelf) {
+		if ( (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Fly")	) && gameOverScreen.activeSelf) {
 			SceneTransitionController transitionScript = GetComponent<SceneTransitionController>();
 			transitionScript.RestartGame();
 		}
